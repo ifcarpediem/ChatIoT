@@ -19,7 +19,7 @@ You will need to install [Home Assistant](https://www.home-assistant.io/installa
 ### Download ChatIoT
 Download ChatIoT and ensure that ChatIoT is running on the same device as Home Assistant.
 ```bash
-git clone https://github.com/ifcarpediem/chatiot.git
+git clone https://github.com/ifcarpediem/ChatIoT.git
 ```
 
 ### Start Server
