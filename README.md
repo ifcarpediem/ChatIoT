@@ -33,7 +33,7 @@ The server-side configuration file is `chatiot/server/configs/config.yaml`, and 
 
 ```bash
 # start server
-cd client
+cd server
 pip install -r requirements.txt
 python client.py
 ```
