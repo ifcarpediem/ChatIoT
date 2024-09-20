@@ -1,8 +1,8 @@
 ChatIoT: Zero-code Generation of Trigger-action Based IoT Programs
 ===
-The mission of ChatIoT is to empower users to create TAPs (Trigger-action Program) through natural language interactions. 
+The mission of ChatIoT is to empower users to create TAP (Trigger-action Program) through natural language interactions. 
 
-This repository is dedicated to the smart home domain, utilizing the Home Assistant open-source platform as its core infrastructure. Once ChatIoT is deployed, users can effortlessly control smart home devices using natural language (e.g., 'Turn on the lights') or create TAP (Trigger-Action-Program) rules to automate tasks (e.g., 'If someone passes through the living room, automatically turn on the living room lights').
+This repository is dedicated to the smart home domain, utilizing the Home Assistant open-source platform as its core infrastructure. Once ChatIoT is deployed, users can effortlessly control smart home devices using natural language (e.g., 'Turn on the lights') or create TAP rules to automate tasks (e.g., 'If someone passes through the living room, automatically turn on the living room lights').
 
 <p align="center">
 <a href=""><img src="docs\resources\ChatIoT_usage_overview.png" width="500px"></a>
