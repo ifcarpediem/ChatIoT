@@ -4,14 +4,14 @@ import httpx
 
 class OpenAILLM():
     def __init__(self, model: str, config: dict):
-        if "openai" not in config[model]["format"]:
+        if "openai" not in config["llm_service"]["llm_models"][model]["format"]:
             raise ValueError("Model format is not supported by OpenAI API")
-        self.api_key = config[model]['api_key']
+        self.api_key = config["llm_service"]["llm_models"][model]['api_key']
         self.model = model
-        self.temperature = config[model]['temperature']
-        self.max_tokens = config[model]['max_tokens']
-        if 'base_url' in config[model]:
-            self.base_url = config[model]['base_url']
+        self.temperature = config["llm_service"]["llm_models"][model]['temperature']
+        self.max_tokens = config["llm_service"]["llm_models"][model]['max_tokens']
+        if 'base_url' in config["llm_service"]["llm_models"][model]:
+            self.base_url = config["llm_service"]["llm_models"][model]['base_url']
             self.client = OpenAI(
                 base_url = self.base_url, 
                 api_key = self.api_key,

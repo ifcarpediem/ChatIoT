@@ -45,7 +45,7 @@ class LLM():
         self.total_completion_tokens = 0
         self.total_prompt_tokens = 0
         self.total_cost = 0.0
-        self.model = CONFIG.configs['model']
+        self.model = CONFIG.configs["llm_server"]['model']
         self.history = []
     
     @property
@@ -95,7 +95,7 @@ class LLM():
         if model:
             self.model = model
         else:
-            self.model = CONFIG.configs['model']
+            self.model = CONFIG.configs["llm_server"]['model']
 
 if __name__ == "__main__":
     llm = LLM()

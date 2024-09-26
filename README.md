@@ -9,7 +9,7 @@ This repository is dedicated to the smart home domain, utilizing the Home Assist
 </p>
 
 # Pre-requisites
-You will need to install [Home Assistant](https://www.home-assistant.io/installation/) and integrate your devices with it (the project currently mainly supports devices that use the MIoT protocol, which can be connected through [Xiaomi Miot Auto](https://github.com/al-one/hass-xiaomi-miot)). Please ensure that the device names and areas are correctly configured. Additionally, please mount the Home Assistant configuration file to a local directory (as future configurations will be required).
+You will need to install [Home Assistant](https://www.home-assistant.io/installation/) and integrate your devices with it. This project currently mainly supports devices that use the MIoT protocol, which can be connected through [Xiaomi Miot Auto](https://github.com/al-one/hass-xiaomi-miot). Please ensure that the device names and areas are correctly configured. Additionally, please mount the Home Assistant configuration file to a local directory (as future configurations will be required).
 
 # Get Started
 
@@ -27,9 +27,11 @@ The current server only provides the FastAPI service for Large Language Models (
 
 The server-side configuration file is `chatiot/server/configs/config.yaml`, and some parameters are presented as follows:
 
-+ `llm_models`: Currently supports the GPT series, DeepSeek, and Moonshot. We are working on integrating more LLMs.
++ `llm_service`: deploy llm service by FastAPI.
   + `port`: the FastAPI port for the LLM service, default is 10000.
-  + `api_key`: required
+  + `llm_models`: currently supports the GPT series, DeepSeek, and Moonshot. We are working on integrating more LLMs.
+    + `api_key`: required
+
 
 ```bash
 # start server
@@ -51,28 +53,28 @@ The current client is responsible for interacting with the user as well as Home 
 
 The client-side configuration file is `chatiot/client/configs/config.yaml`, and some parameters are presented as follows:
 
-+ `llm_server`: How to access the llm service
++ `llm_server`: how to access the llm service
   + `host`: the host of the server
   + `port`: the FastAPI port for the LLM service, default is 10000
   + `model`: select the llm model to use
 
-+ `home_assistant`: How to access Home Assistant
++ `home_assistant`: how to access Home Assistant
   + `host`: "0.0.0.0", Home Assistant must run on the same device as the client.
   + `port`: default is 8123
   + `token`: the access token
-  + `config_path`: The absolute path of Home Assistant's config on this device
+  + `config_path`: the absolute path of Home Assistant's config on this device
 
-+ `porcupine`: The current wake word service is based on [porcupine](https://console.picovoice.ai/login), which provides 'jarvis' by default.
++ `porcupine`: the current wake word service is based on [porcupine](https://console.picovoice.ai/login), which provides 'jarvis' by default.
   + `keywords`: []
   + `keyword_paths`:  ["ppn/***"]
   + `sensitivities`: []
 
-+ `tencent`: The current voice service, such as text-to-speech and speech-to-text, is based on [Tencent's services](https://cloud.tencent.com/product/tts)
++ `tencent`: the current voice service, such as text-to-speech and speech-to-text, is based on [Tencent's services](https://cloud.tencent.com/product/tts)
   + `appid`
   + `secret_id`
   + `secret_key`
 
-+ `web_ui`: The current web page is implemented using Streamlit. 
++ `web_ui`: the current web page is implemented using Streamlit. 
   + `port`: default is 8501
 
 ```bash

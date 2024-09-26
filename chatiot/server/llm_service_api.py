@@ -5,6 +5,7 @@ from utils.config import CONFIG
 from utils.logs import logger
 
 model_list = ["gpt-4-turbo", "gpt-4o", "gpt-3.5-turbo-0125", "gpt-4o-mini", "deepseek-chat", "moonshot-v1-8k"]
+
 llm_1 = OpenAILLM("gpt-4-turbo", CONFIG.configs)
 llm_2 = OpenAILLM("gpt-4o", CONFIG.configs)
 llm_3 = OpenAILLM("gpt-4o-mini", CONFIG.configs)
@@ -97,4 +98,5 @@ async def ask(request: ChatRequest) -> dict:
 
 if __name__ == '__main__':
     import uvicorn
+    port = CONFIG.configs['llm_service']['port']
     uvicorn.run("llm_service_api:app", host="0.0.0.0", port=10000, reload=True, debug=True)
