@@ -5,7 +5,10 @@ import os
 
 def get_config_file():
     current_path = Path.cwd()
-    config_path = os.path.join(current_path, "configs", "config.yaml")
+    if os.path.exists(os.path.join(current_path, "configs", "default_config.yaml")):
+        config_path = os.path.join(current_path, "configs", "default_config.yaml")
+    else:
+        config_path = os.path.join(current_path, "configs", "config.yaml")
     return config_path
 
 class Config(metaclass=Singleton):
@@ -14,6 +17,7 @@ class Config(metaclass=Singleton):
     config = Config("config.yaml")
     secret_key = config.get_key("MY_SECRET_KEY")
     print("Secret key:", secret_key)
+    D:\master_local\ChatIoT_github\chatiot\client\configs\default_config.yaml
     """
 
     _instance = None

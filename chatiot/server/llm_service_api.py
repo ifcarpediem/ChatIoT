@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from providers.openai_api import OpenAILLM
-from utils.config import CONFIG
+from config import CONFIG
 from utils.logs import logger
 
 model_list = ["gpt-4-turbo", "gpt-4o", "gpt-3.5-turbo-0125", "gpt-4o-mini", "deepseek-chat", "moonshot-v1-8k"]
@@ -12,6 +12,10 @@ llm_3 = OpenAILLM("gpt-4o-mini", CONFIG.configs)
 llm_4 = OpenAILLM("gpt-3.5-turbo-0125", CONFIG.configs)
 llm_5 = OpenAILLM("deepseek-chat", CONFIG.configs)
 llm_6 = OpenAILLM("moonshot-v1-8k", CONFIG.configs)
+
+# messages = [{"role": "user", "content": "你好，我是小明。"}]
+# response = llm_2.chat_completion_text_v1(messages)
+# print(response)
 
 # per M tokens
 prices = {
@@ -24,7 +28,6 @@ prices = {
 }
 
 app = FastAPI()
-
 
 class ChatRequest(BaseModel):
     model: str
@@ -88,8 +91,9 @@ async def ask(request: ChatRequest) -> dict:
             "rsp": rsp,
             "completion_tokens": completion_tokens,
             "prompt_tokens": prompt_tokens,
-            "cost": (completion_tokens * prices[request.model][0] + prompt_tokens * prices[request.model][1]) * 7.15 / 1e6
+            "cost": round((completion_tokens * prices[request.model][0] + prompt_tokens * prices[request.model][1]) * 7.15 / 1e6, 6)
         }
+        logger.info(f"response_data: {response_data}")
         return response_data
     except ValueError as ve:
         raise HTTPException(status_code=400, detail=ve)
@@ -99,4 +103,4 @@ async def ask(request: ChatRequest) -> dict:
 if __name__ == '__main__':
     import uvicorn
     port = CONFIG.configs['llm_service']['port']
-    uvicorn.run("llm_service_api:app", host="0.0.0.0", port=10000, reload=True, debug=True)
+    uvicorn.run("llm_service_api:app", host="0.0.0.0", port=port, reload=True)

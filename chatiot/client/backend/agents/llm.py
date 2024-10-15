@@ -1,10 +1,13 @@
+import sys
+from pathlib import Path
+cwd = Path.cwd()
+sys.path.append(str(cwd))
+
 from typing import NamedTuple
 from config import CONFIG
-from .utils.singleton import Singleton
-from abc import ABC, abstractmethod
-from dataclasses import dataclass
+from backend.agents.utils.singleton import Singleton
 import requests
-from .utils.logs import logger
+from backend.agents.utils.logs import logger
 
 class Costs(NamedTuple):
     total_prompt_tokens: int
@@ -71,8 +74,6 @@ class LLM():
             "messages": messages,
             "format": rsp_format # text or json
         }
-        # response = requests.post("http://localhost:10000/llm/ask", json=chat_request).json()
-        # response = requests.post("http://192.168.50.239:10000/llm/ask", json=chat_request).json()
         llm_server_host = CONFIG.configs['llm_server']['host']
         llm_server_port = CONFIG.configs['llm_server']['port']
         response = requests.post(f"http://{llm_server_host}:{llm_server_port}/llm/ask", json=chat_request).json()
@@ -98,14 +99,15 @@ class LLM():
             self.model = CONFIG.configs["llm_server"]['model']
 
 if __name__ == "__main__":
+    # 测试连续对话
     llm = LLM()
-    llm.add_user_msg("你好, 我是小明")
+    llm.add_user_msg("我是李明。")
     rsp = llm.ask(llm.history, "")
     print(rsp)
     print(llm._cost_manager.costs)
     print(llm.costs)
     llm.add_system_msg(rsp)
-    llm.add_user_msg("你好, 告诉我是谁？")
+    llm.add_user_msg("我的名字是什么？")
     rsp = llm.ask(llm.history, "")
     print(rsp)
     print(llm._cost_manager.costs)

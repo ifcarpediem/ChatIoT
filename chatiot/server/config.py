@@ -6,7 +6,10 @@ import os
 
 def get_config_file():
     current_path = Path.cwd()
-    config_path = os.path.join(current_path, "configs", "config.yaml")
+    if os.path.exists(os.path.join(current_path, "configs", "default_config.yaml")):
+        config_path = os.path.join(current_path, "configs", "default_config.yaml")
+    else:
+        config_path = os.path.join(current_path, "frontend", "configs", "config.yaml")
     return config_path
 
 class Config(metaclass=Singleton):

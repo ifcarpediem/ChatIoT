@@ -7,7 +7,6 @@ from .roles.device_controler import DeviceControler
 from .roles.tap_generator import TapGenerator
 import asyncio
 from .tools.home_assistant import HomeAssistantApi
-from backend.model_manager.model_manager import get_all_models
 from backend.agents.utils.logs import logger
 
 class Environment(BaseModel):
@@ -25,7 +24,6 @@ class Environment(BaseModel):
     def __init__(self):
         super().__init__()
         self.devices = self.home_assistant.get_device_context()
-        self.model_zoo = get_all_models()
         self.add_roles([Manager(), DeviceControler(), TapGenerator()])
 
     def add_role(self, role: Role):

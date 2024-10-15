@@ -169,8 +169,20 @@ class HomeAssistantApi:
         self.reload_all()
 
     def add_automation(self, new_id: str, new_automation: str):
-        
         automation_file = os.path.join(self.config_path, "automations.yaml")
+        # if there is only "[]" in automations.yaml, remove it first
+        with open(automation_file, "r", encoding="utf-8") as f:
+            lines = f.readlines()
+        if len(lines) == 1 and lines[0] == "[]\n":
+            with open(automation_file, "w", encoding="utf-8") as f:
+                f.write("")
+        # copy the automations.yaml for bak
+        bak_file = os.path.join(self.config_path, "automations.yaml.bak")
+        if not os.path.exists(bak_file):
+            with open(automation_file, "r", encoding="utf-8") as f:
+                lines = f.readlines()
+            with open(bak_file, "w", encoding="utf-8") as f:
+                f.writelines(lines)
         with open(automation_file, "r", encoding="utf-8") as f:
             lines = f.readlines()
         for line in lines:
@@ -178,7 +190,16 @@ class HomeAssistantApi:
                 logger.error(f"id {new_id} already exists in automations.yaml")
                 return
         append_file(automation_file, new_automation)
-        self.reload_all()
+        if self.check_configuration()[0] == "valid":
+            self.reload_all()
+        else:
+            # replace the automations.yaml with the bak file
+            logger.error("invalid configuration, restore automations.yaml")
+            with open(bak_file, "r", encoding="utf-8") as f:
+                lines = f.readlines()
+            with open(automation_file, "w", encoding="utf-8") as f:
+                f.writelines(lines)
+
 
     def remove_automation(self, id_to_remove: int):
         automation_file = os.path.join(self.config_path, "automations.yaml")
@@ -272,7 +293,7 @@ class HomeAssistantApi:
 
     def get_device_context(self) -> list[dict]:
         if not os.path.exists('./temp/miot/miot_devices.json'):
-            write_json('./temp/miot/miot_devices.json', [])
+            write_json('./temp/miot/miot_devices.json', self.get_miot_devices())
         miot_devices = get_json('./temp/miot/miot_devices.json')
         self.get_miot_info()
         device_context = []
@@ -301,7 +322,8 @@ class HomeAssistantApi:
                 services.pop(service_name)
             single_device_context['services'] = services
             device_context.append(single_device_context)
-        camera_list = CONFIG.configs["camera_list"]
+        # camera_list = CONFIG.configs["camera_list"]
+        camera_list = None # camera will be added in the future
         if camera_list:
             for camera in camera_list:
                 single_device_context = {}
@@ -316,5 +338,6 @@ class HomeAssistantApi:
 if __name__ == '__main__':
     from config import CONFIG
     api = HomeAssistantApi()
+    print(api.get_device_context())
 
     

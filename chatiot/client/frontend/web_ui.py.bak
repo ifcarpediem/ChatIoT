@@ -80,17 +80,45 @@ chat_box.output_messages()
 
 logger.info('Web_ui is running...')
 
-if query:
+while True:
+
+    if not st.session_state.completed:
+        if not query:
+            logger.info('waiting user say...')
+            play_wakeup()
+            logger.info('start recording...')
+            wakeup_handler.record_audio_dynamic(temp_input_audio, 100000, 32000)
+            logger.info('recorded')
+            asr_result = asr_tts.asr(temp_input_audio)
+            logger.info('user said: %s' % asr_result)
+            query = asr_result
+
+    else:
+        keyword = wakeup_handler.run_detect_wakeup_word()
+        if not keyword and not query:
+            continue
+        if not query:
+            logger.info('waiting user say...')
+            play_wakeup()
+            logger.info('start recording...')
+            wakeup_handler.record_audio_dynamic(temp_input_audio, 100000, 32000) # TODO
+            logger.info('recorded')
+            asr_result = asr_tts.asr(temp_input_audio)
+            logger.info('user said: %s' % asr_result)
+            query = asr_result
+
     chat_box.user_say(query)
     elements = chat_box.ai_say(
         [
             Markdown("thinking", in_expander=True, expanded=False, title="")
         ]
     )
-    res_text, complete_flag = asyncio.run(JARVIS.run(query))
+    res_text, complete_flag = JARVIS.run(query)
     if complete_flag:
         st.session_state.completed = True
     else:
         st.session_state.completed = False
+    asr_tts.tts(res_text, temp_output_audio)
+    play_audio(temp_output_audio)
     logger.info('assistant said: %s' % res_text)
     chat_box.update_msg(res_text, element_index=0, streaming=False, expanded=True, state="complete")

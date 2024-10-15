@@ -1,4 +1,10 @@
-from .home_assistant import HomeAssistantApi
+import sys
+from pathlib import Path
+cwd = Path.cwd()
+sys.path.append(str(cwd))
+from backend.agents.tools.home_assistant import HomeAssistantApi
+
+# from .home_assistant import HomeAssistantApi
 from backend.agents.utils.utils import get_json
 from backend.agents.utils.logs import logger
 import time
@@ -55,12 +61,16 @@ class Translator:
         miot_devices = get_json("./temp/miot/miot_devices.json")
         states = self.homeassistant.get_states()
         content_miot_device = get_json("./temp/miot/device_context.json")
-        triggers = TAP_json.get("trigger", [])
-        actions = TAP_json.get("action", [])
+        # triggers = TAP_json.get("trigger", [])
+        # actions = TAP_json.get("action", [])
+        triggers = TAP_json.get("trigger", "")
+        actions = TAP_json.get("action", "")
 
         #TODO
-        trigger_str = triggers[0]
-        action_str = actions[0]
+        trigger_str = triggers
+        action_str = actions
+        logger.info("trigger_str: {}". format(trigger_str))
+        logger.info("action_str: {}". format(action_str))
 
         action_service_str = action_str.split("=")[0].strip()
         action_value_str = action_str.split("=")[1].strip()
@@ -75,6 +85,7 @@ class Translator:
                 break
         
         action_entity = self.homeassistant.find_state_by_field_mac(action_field_str, action_mac_address, states)
+        logger.info("action_entity: {}". format(action_entity))
 
         action_entity_id = action_entity["entity_id"]
 
@@ -126,6 +137,7 @@ class Translator:
             if trigger_field_str == "illumination_sensor.illumination":
                 trigger_field_str = "illumination-2-1"
             trigger_entity = self.homeassistant.find_state_by_field_mac(trigger_field_str, trigger_mac_address, states)
+            logger.info("trigger_entity: {}". format(trigger_entity))
             trigger_entity_id = trigger_entity["entity_id"]
             for device in content_miot_device:
                 if device.get("id", -1) == trigger_id:
@@ -146,38 +158,41 @@ class Translator:
                         trigger_value = trigger_value_str
                     break
             if op == "==":
-                trigger_yaml = f'''- platform: numeric_state
-        entity_id: {trigger_entity_id}
-        attribute: {trigger_field_str}
-        above: {trigger_value-1}
-        below: {trigger_value+1}'''
+                trigger_yaml = f'''platform: numeric_state
+      entity_id: {trigger_entity_id}
+      attribute: {trigger_field_str}
+      above: {trigger_value-1}
+      below: {trigger_value+1}'''
             elif op == ">":
-                trigger_yaml = f'''- platform: numeric_state
-        entity_id: {trigger_entity_id}
-        attribute: {trigger_field_str}
-        above: {trigger_value}'''
+                trigger_yaml = f'''platform: numeric_state
+      entity_id: {trigger_entity_id}
+      attribute: {trigger_field_str}
+      above: {trigger_value}'''
             elif op == "<":
                 trigger_yaml = f'''- platform: numeric_state
-        entity_id: {trigger_entity_id}
-        attribute: {trigger_field_str}
-        below: {trigger_value}'''   
+      entity_id: {trigger_entity_id}
+      attribute: {trigger_field_str}
+      below: {trigger_value}'''   
 
         timestamp = int(time.time() * 1000)
         new_automation = f'''
-    - id: '{timestamp}'
-    alias: {user_input}
-    trigger: 
-        {trigger_yaml}
-    action:
-        - service: xiaomi_miot.set_property
-        data:
-            entity_id: {action_entity_id}
-            field: {action_field_str}
-            value: {action_value}
+- id: '{timestamp}'
+  alias: {user_input}
+  trigger: 
+      {trigger_yaml}
+  action:
+      service: xiaomi_miot.set_property
+      data:
+        entity_id: {action_entity_id}
+        field: {action_field_str}
+        value: {action_value}
     '''
-        logger.debug("new automation yaml: {}". format(new_automation.strip()))
-        self.homeassistant.add_automation(new_automation)
+        logger.info("new automation yaml: {}". format(new_automation))
+        self.homeassistant.add_automation(str(timestamp), new_automation)
         
 if __name__ == "__main__":
-    pass
+    translator = Translator()
+    # translator.run_single_command("1.light.on = false")
+    TAP = {"trigger": "2.magnet_sensor.contact_state==true", "action": "1.light.on=true"}
+    translator.deploy_tap("turn on the light when the door is opened", TAP)
 
