@@ -1,0 +1,334 @@
+{
+  "type": "urn:miot-spec-v2:device:bath-heater:0000A028:yeelink-v11:1",
+  "description": "Bath Heater",
+  "services": [
+    {
+      "iid": 1,
+      "type": "urn:miot-spec-v2:service:device-information:00007801:yeelink-v11:1",
+      "description": "Device Information",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:manufacturer:00000001:yeelink-v11:1",
+          "description": "Device Manufacturer",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:property:model:00000002:yeelink-v11:1",
+          "description": "Device Model",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:miot-spec-v2:property:serial-number:00000003:yeelink-v11:1",
+          "description": "Device Serial Number",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 4,
+          "type": "urn:miot-spec-v2:property:firmware-revision:00000005:yeelink-v11:1",
+          "description": "Current Firmware Version",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        }
+      ]
+    },
+    {
+      "iid": 2,
+      "type": "urn:miot-spec-v2:service:light:00007802:yeelink-v11:1",
+      "description": "Light",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:on:00000006:yeelink-v11:1",
+          "description": "Switch Status",
+          "format": "bool",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:property:mode:00000008:yeelink-v11:1",
+          "description": "Mode",
+          "format": "uint8",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ],
+          "unit": "none",
+          "value-list": [
+            {
+              "value": 0,
+              "description": "Day"
+            },
+            {
+              "value": 1,
+              "description": "Night"
+            }
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:miot-spec-v2:property:brightness:0000000D:yeelink-v11:1",
+          "description": "Brightness",
+          "format": "uint8",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ],
+          "unit": "percentage",
+          "value-range": [
+            1,
+            100,
+            1
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:action:toggle:00002811:yeelink-v11:1",
+          "description": "Toggle",
+          "in": [],
+          "out": []
+        }
+      ]
+    },
+    {
+      "iid": 3,
+      "type": "urn:miot-spec-v2:service:ptc-bath-heater:0000783B:yeelink-v11:1",
+      "description": "PTC Bath Heater",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:mode:00000008:yeelink-v11:1",
+          "description": "Mode",
+          "format": "uint8",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ],
+          "value-list": [
+            {
+              "value": 0,
+              "description": "Idle"
+            },
+            {
+              "value": 1,
+              "description": "Dry"
+            },
+            {
+              "value": 2,
+              "description": "Defog"
+            },
+            {
+              "value": 3,
+              "description": "Other"
+            }
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:property:blow:000000CD:yeelink-v11:1",
+          "description": "Blow",
+          "format": "bool",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:miot-spec-v2:property:heating:000000C7:yeelink-v11:1",
+          "description": "Heating",
+          "format": "bool",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ]
+        },
+        {
+          "iid": 4,
+          "type": "urn:miot-spec-v2:property:ventilation:000000CE:yeelink-v11:1",
+          "description": "Ventilation",
+          "format": "bool",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ]
+        },
+        {
+          "iid": 5,
+          "type": "urn:miot-spec-v2:property:heat-level:00000047:yeelink-v11:1",
+          "description": "Heat Level",
+          "format": "uint8",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ],
+          "value-list": [
+            {
+              "value": 1,
+              "description": "Level1"
+            },
+            {
+              "value": 2,
+              "description": "Level2"
+            }
+          ]
+        },
+        {
+          "iid": 6,
+          "type": "urn:miot-spec-v2:property:off-delay:00000053:yeelink-v11:1",
+          "description": "Power Off Delay",
+          "format": "bool",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ]
+        },
+        {
+          "iid": 7,
+          "type": "urn:miot-spec-v2:property:off-delay-time:00000054:yeelink-v11:1",
+          "description": "Power Off Delay Time",
+          "format": "uint32",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ],
+          "unit": "minutes",
+          "value-range": [
+            0,
+            120,
+            1
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:action:stop-working:00002825:yeelink-v11:1",
+          "description": "Stop Working",
+          "in": [],
+          "out": []
+        }
+      ]
+    },
+    {
+      "iid": 4,
+      "type": "urn:yeelink-spec:service:yl-bath-heater:00007801:yeelink-v11:1",
+      "description": "yl-bath-heater",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:yeelink-spec:property:light-delayoff:00000001:yeelink-v11:1",
+          "description": "light-delayoff",
+          "format": "uint8",
+          "access": [
+            "write"
+          ],
+          "unit": "minutes",
+          "value-range": [
+            1,
+            90,
+            1
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:yeelink-spec:property:bath-delayoff:00000002:yeelink-v11:1",
+          "description": "bath-delayoff",
+          "format": "uint8",
+          "access": [
+            "write"
+          ],
+          "unit": "minutes",
+          "value-range": [
+            1,
+            120,
+            1
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "iid": 1,
+          "type": "urn:yeelink-spec:action:brightness-up:00002801:yeelink-v11:1",
+          "description": "brightness-up",
+          "in": [],
+          "out": []
+        },
+        {
+          "iid": 2,
+          "type": "urn:yeelink-spec:action:brightness-down:00002802:yeelink-v11:1",
+          "description": "brightness-down",
+          "in": [],
+          "out": []
+        },
+        {
+          "iid": 3,
+          "type": "urn:yeelink-spec:action:stop-all:00002803:yeelink-v11:1",
+          "description": "stop-all",
+          "in": [],
+          "out": []
+        }
+      ],
+      "events": [
+        {
+          "iid": 1,
+          "type": "urn:yeelink-spec:event:overtime:00005001:yeelink-v11:1",
+          "description": "overtime",
+          "arguments": []
+        },
+        {
+          "iid": 2,
+          "type": "urn:yeelink-spec:event:delayoff:00005002:yeelink-v11:1",
+          "description": "delayoff",
+          "arguments": []
+        },
+        {
+          "iid": 3,
+          "type": "urn:yeelink-spec:event:venting-keep:00005003:yeelink-v11:1",
+          "description": "venting-keep",
+          "arguments": []
+        },
+        {
+          "iid": 4,
+          "type": "urn:yeelink-spec:event:low-battery:00005004:yeelink-v11:1",
+          "description": "low-battery",
+          "arguments": []
+        },
+        {
+          "iid": 5,
+          "type": "urn:yeelink-spec:event:medium-battery:00005005:yeelink-v11:1",
+          "description": "medium-battery",
+          "arguments": []
+        }
+      ]
+    }
+  ]
+}

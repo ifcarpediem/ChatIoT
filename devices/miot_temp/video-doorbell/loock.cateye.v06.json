@@ -1,0 +1,874 @@
+{
+  "type": "urn:miot-spec-v2:device:video-doorbell:0000A03A:loock-v06:1",
+  "description": "Video Doorbell",
+  "services": [
+    {
+      "iid": 1,
+      "type": "urn:miot-spec-v2:service:device-information:00007801:loock-v06:1",
+      "description": "Device Information",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:manufacturer:00000001:loock-v06:1",
+          "description": "Device Manufacturer",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:property:model:00000002:loock-v06:1",
+          "description": "Device Model",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:miot-spec-v2:property:serial-number:00000003:loock-v06:1",
+          "description": "Device Serial Number",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 4,
+          "type": "urn:miot-spec-v2:property:firmware-revision:00000005:loock-v06:1",
+          "description": "Current Firmware Version",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        }
+      ]
+    },
+    {
+      "iid": 2,
+      "type": "urn:miot-spec-v2:service:video-doorbell:00007863:loock-v06:1",
+      "description": "Video Doorbell",
+      "properties": [
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:property:status:00000007:loock-v06:1",
+          "description": "Status",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "value-list": [
+            {
+              "value": 0,
+              "description": "Offline"
+            },
+            {
+              "value": 1,
+              "description": "Online"
+            }
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:miot-spec-v2:property:night-shot:00000057:loock-v06:1",
+          "description": "Night Shot",
+          "format": "uint8",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ],
+          "value-list": [
+            {
+              "value": 0,
+              "description": "Auto"
+            },
+            {
+              "value": 1,
+              "description": "On"
+            },
+            {
+              "value": 2,
+              "description": "Off"
+            }
+          ]
+        },
+        {
+          "iid": 5,
+          "type": "urn:miot-spec-v2:property:wdr-mode:00000088:loock-v06:1",
+          "description": "Wide Dynamic Range Mode",
+          "format": "bool",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ]
+        },
+        {
+          "iid": 6,
+          "type": "urn:miot-spec-v2:property:eco:00000024:loock-v06:1",
+          "description": "ECO",
+          "format": "bool",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ]
+        },
+        {
+          "iid": 7,
+          "type": "urn:miot-spec-v2:property:ringtone:0000009D:loock-v06:1",
+          "description": "Ringtone",
+          "format": "uint8",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ],
+          "value-range": [
+            1,
+            3,
+            1
+          ]
+        },
+        {
+          "iid": 8,
+          "type": "urn:miot-spec-v2:property:cloud-video-id:00000113:loock-v06:1",
+          "description": "Cloud Video ID",
+          "format": "string",
+          "access": []
+        },
+        {
+          "iid": 9,
+          "type": "urn:miot-spec-v2:property:current-time:00000098:loock-v06:1",
+          "description": "Current Time",
+          "format": "uint32",
+          "access": [],
+          "value-range": [
+            0,
+            4294967295,
+            1
+          ]
+        }
+      ],
+      "events": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:event:doorbell-ring:00005013:loock-v06:1",
+          "description": "Doorbell Ring",
+          "arguments": [
+            9,
+            8
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:event:doorbell-forcibly-removed:00005025:loock-v06:1",
+          "description": "Doorbell Forcibly Removed",
+          "arguments": [
+            9,
+            8
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:miot-spec-v2:event:someone-passed-by:0000502C:loock-v06:1",
+          "description": "Someone Passed By",
+          "arguments": [
+            9,
+            8
+          ]
+        },
+        {
+          "iid": 4,
+          "type": "urn:miot-spec-v2:event:someone-at-the-door:0000502D:loock-v06:1",
+          "description": "Someone At The Door",
+          "arguments": [
+            9,
+            8
+          ]
+        }
+      ]
+    },
+    {
+      "iid": 3,
+      "type": "urn:miot-spec-v2:service:indicator-light:00007803:loock-v06:1",
+      "description": "Indicator Light",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:on:00000006:loock-v06:1",
+          "description": "Switch Status",
+          "format": "bool",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ]
+        }
+      ]
+    },
+    {
+      "iid": 4,
+      "type": "urn:miot-spec-v2:service:motion-detection:0000784F:loock-v06:1",
+      "description": "Motion Detection",
+      "properties": [
+        {
+          "iid": 3,
+          "type": "urn:miot-spec-v2:property:detection-sensitivity:00000090:loock-v06:1",
+          "description": "Detection Sensitivity",
+          "format": "uint8",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ],
+          "unit": "none",
+          "value-list": [
+            {
+              "value": 0,
+              "description": "High"
+            },
+            {
+              "value": 1,
+              "description": "Middle"
+            },
+            {
+              "value": 2,
+              "description": "Low"
+            }
+          ]
+        },
+        {
+          "iid": 4,
+          "type": "urn:miot-spec-v2:property:motion-detection-start-time:00000091:loock-v06:1",
+          "description": "Motion Detection Start Time",
+          "format": "string",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ]
+        },
+        {
+          "iid": 5,
+          "type": "urn:miot-spec-v2:property:motion-detection-end-time:00000092:loock-v06:1",
+          "description": "Motion Detection End Time",
+          "format": "string",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ]
+        },
+        {
+          "iid": 6,
+          "type": "urn:miot-spec-v2:property:alarm-interval:0000008F:loock-v06:1",
+          "description": "Alarm Interval",
+          "format": "uint8",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ],
+          "unit": "seconds",
+          "value-range": [
+            0,
+            60,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "iid": 6,
+      "type": "urn:miot-spec-v2:service:battery:00007805:loock-v06:1",
+      "description": "Battery",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:battery-level:00000014:loock-v06:1",
+          "description": "Battery Level",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "unit": "percentage",
+          "value-range": [
+            0,
+            100,
+            1
+          ]
+        }
+      ],
+      "events": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:event:low-battery:00005003:loock-v06:1",
+          "description": "Low Battery",
+          "arguments": []
+        }
+      ]
+    },
+    {
+      "iid": 7,
+      "type": "urn:miot-spec-v2:service:p2p-stream:00007881:loock-v06:1",
+      "description": "P2P Stream",
+      "actions": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:action:start-p2p-stream:00002839:loock-v06:1",
+          "description": "Start P2P Stream",
+          "in": [],
+          "out": []
+        },
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:action:stop-stream:00002822:loock-v06:1",
+          "description": "Stop Camera Stream",
+          "in": [],
+          "out": []
+        }
+      ]
+    },
+    {
+      "iid": 8,
+      "type": "urn:miot-spec-v2:service:speaker:0000781C:loock-v06:1",
+      "description": "Speaker",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:volume:00000013:loock-v06:1",
+          "description": "Volume",
+          "format": "uint8",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ],
+          "unit": "percentage",
+          "value-range": [
+            0,
+            100,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "iid": 5,
+      "type": "urn:loock-spec:service:cateye:00007801:loock-v06:1",
+      "description": "cateye",
+      "properties": [
+        {
+          "iid": 2,
+          "type": "urn:loock-spec:property:auto-ota:00000002:loock-v06:1",
+          "description": "auto-ota",
+          "format": "bool",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ],
+          "unit": "none"
+        },
+        {
+          "iid": 3,
+          "type": "urn:loock-spec:property:distortion-correct:00000003:loock-v06:1",
+          "description": "distortion-correct",
+          "format": "bool",
+          "access": [
+            "write",
+            "read",
+            "notify"
+          ],
+          "unit": "none"
+        },
+        {
+          "iid": 4,
+          "type": "urn:loock-spec:property:auto-screen-on:00000004:loock-v06:1",
+          "description": "auto-screen-on",
+          "format": "bool",
+          "access": [
+            "write",
+            "read",
+            "notify"
+          ],
+          "unit": "none"
+        },
+        {
+          "iid": 5,
+          "type": "urn:loock-spec:property:light-sensibility:00000005:loock-v06:1",
+          "description": "light-sensibility",
+          "format": "uint8",
+          "access": [
+            "write",
+            "read",
+            "notify"
+          ],
+          "unit": "none",
+          "value-list": [
+            {
+              "value": 0,
+              "description": "High"
+            },
+            {
+              "value": 1,
+              "description": "Middle"
+            },
+            {
+              "value": 2,
+              "description": "Low"
+            }
+          ]
+        },
+        {
+          "iid": 7,
+          "type": "urn:loock-spec:property:device-warn-time:00000007:loock-v06:1",
+          "description": "",
+          "format": "uint8",
+          "access": [
+            "write",
+            "notify",
+            "read"
+          ],
+          "unit": "seconds",
+          "value-list": [
+            {
+              "value": 0,
+              "description": "0"
+            },
+            {
+              "value": 6,
+              "description": "6"
+            },
+            {
+              "value": 10,
+              "description": "10"
+            },
+            {
+              "value": 15,
+              "description": "15"
+            },
+            {
+              "value": 20,
+              "description": "20"
+            },
+            {
+              "value": 30,
+              "description": "30"
+            },
+            {
+              "value": 60,
+              "description": "60"
+            }
+          ]
+        },
+        {
+          "iid": 8,
+          "type": "urn:loock-spec:property:motion-latency-time:00000008:loock-v06:1",
+          "description": "motion-latency-time",
+          "format": "uint8",
+          "access": [
+            "write",
+            "read",
+            "notify"
+          ],
+          "unit": "seconds",
+          "value-list": [
+            {
+              "value": 0,
+              "description": "0"
+            },
+            {
+              "value": 2,
+              "description": "2"
+            },
+            {
+              "value": 4,
+              "description": "4"
+            },
+            {
+              "value": 6,
+              "description": "6"
+            },
+            {
+              "value": 8,
+              "description": "8"
+            },
+            {
+              "value": 10,
+              "description": "10"
+            }
+          ]
+        },
+        {
+          "iid": 10,
+          "type": "urn:loock-spec:property:screen-status:0000000a:loock-v06:1",
+          "description": "screen-status",
+          "format": "bool",
+          "access": [
+            "notify",
+            "read"
+          ],
+          "unit": "none"
+        },
+        {
+          "iid": 18,
+          "type": "urn:loock-spec:property:yd-model:00000011:loock-v06:1",
+          "description": "yd-model",
+          "format": "string",
+          "access": [
+            "notify",
+            "read"
+          ],
+          "unit": "none"
+        },
+        {
+          "iid": 19,
+          "type": "urn:loock-spec:property:sn:00000012:loock-v06:1",
+          "description": "sn",
+          "format": "string",
+          "access": [
+            "notify",
+            "read"
+          ],
+          "unit": "none"
+        },
+        {
+          "iid": 21,
+          "type": "urn:loock-spec:property:record-sd:00000009:loock-v06:1",
+          "description": "record-sd",
+          "format": "bool",
+          "access": [
+            "write",
+            "read",
+            "notify"
+          ],
+          "unit": "none"
+        },
+        {
+          "iid": 22,
+          "type": "urn:loock-spec:property:stay-duration:00000014:loock-v06:1",
+          "description": "stay-duration",
+          "format": "uint8",
+          "access": [
+            "write",
+            "read",
+            "notify"
+          ],
+          "unit": "seconds",
+          "value-list": [
+            {
+              "value": 3,
+              "description": "3"
+            },
+            {
+              "value": 6,
+              "description": "6"
+            },
+            {
+              "value": 10,
+              "description": "10"
+            },
+            {
+              "value": 15,
+              "description": "15"
+            },
+            {
+              "value": 20,
+              "description": "20"
+            },
+            {
+              "value": 30,
+              "description": "30"
+            }
+          ]
+        },
+        {
+          "iid": 23,
+          "type": "urn:loock-spec:property:tamper-alarm-switch:00000015:loock-v06:1",
+          "description": "tamper-alarm-switch",
+          "format": "bool",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ]
+        },
+        {
+          "iid": 25,
+          "type": "urn:loock-spec:property:visitpush:0000000b:loock-v06:1",
+          "description": "visitpush",
+          "format": "bool",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ]
+        },
+        {
+          "iid": 26,
+          "type": "urn:loock-spec:property:pushpattern:0000000c:loock-v06:1",
+          "description": "pushpattern",
+          "format": "string",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ]
+        },
+        {
+          "iid": 27,
+          "type": "urn:loock-spec:property:visitpushtime:0000000d:loock-v06:1",
+          "description": "visitpushtime",
+          "format": "string",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ]
+        },
+        {
+          "iid": 28,
+          "type": "urn:loock-spec:property:motionpush:0000000e:loock-v06:1",
+          "description": "motionpush",
+          "format": "bool",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ]
+        },
+        {
+          "iid": 29,
+          "type": "urn:loock-spec:property:pushtype:0000000f:loock-v06:1",
+          "description": "pushtype",
+          "format": "int32",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ],
+          "value-list": [
+            {
+              "value": 0,
+              "description": "OnlyPass"
+            },
+            {
+              "value": 1,
+              "description": "OnlyStay"
+            }
+          ]
+        },
+        {
+          "iid": 30,
+          "type": "urn:loock-spec:property:record-video-length:00000010:loock-v06:1",
+          "description": "record-video-length",
+          "format": "uint8",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ],
+          "unit": "seconds",
+          "value-list": [
+            {
+              "value": 10,
+              "description": "10"
+            },
+            {
+              "value": 20,
+              "description": "20"
+            },
+            {
+              "value": 30,
+              "description": "30"
+            },
+            {
+              "value": 60,
+              "description": "60"
+            },
+            {
+              "value": 120,
+              "description": "120"
+            }
+          ]
+        },
+        {
+          "iid": 31,
+          "type": "urn:loock-spec:property:voice-autoreply:00000016:loock-v06:1",
+          "description": "voice-autoreply",
+          "format": "bool",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ]
+        },
+        {
+          "iid": 33,
+          "type": "urn:loock-spec:property:voice-autoreply-time:00000018:loock-v06:1",
+          "description": "voice-autoreply-time",
+          "format": "string",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ]
+        },
+        {
+          "iid": 34,
+          "type": "urn:loock-spec:property:voice-autoreply-item:00000019:loock-v06:1",
+          "description": "voice-autoreply-item",
+          "format": "string",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ]
+        },
+        {
+          "iid": 35,
+          "type": "urn:loock-spec:property:voice-autoreply-week:00000017:loock-v06:1",
+          "description": "voice-autoreply-week",
+          "format": "string",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ]
+        },
+        {
+          "iid": 36,
+          "type": "urn:loock-spec:property:ver-camera-detail:0000001a:loock-v06:1",
+          "description": "ver-camera-detail",
+          "format": "string",
+          "access": [
+            "read",
+            "notify"
+          ]
+        },
+        {
+          "iid": 37,
+          "type": "urn:loock-spec:property:ver-fw-camera:0000001b:loock-v06:1",
+          "description": "ver-fw-camera",
+          "format": "string",
+          "access": [
+            "read",
+            "notify"
+          ]
+        },
+        {
+          "iid": 38,
+          "type": "urn:loock-spec:property:sdcard-info:00000001:loock-v06:1",
+          "description": "sdcard-info",
+          "format": "string",
+          "access": [
+            "read",
+            "notify"
+          ]
+        },
+        {
+          "iid": 39,
+          "type": "urn:loock-spec:property:sdcard-status:00000006:loock-v06:1",
+          "description": "sdcard-status",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "value-list": [
+            {
+              "value": 0,
+              "description": "Unmount"
+            },
+            {
+              "value": 1,
+              "description": "Readable-writable"
+            },
+            {
+              "value": 2,
+              "description": "Error"
+            }
+          ]
+        },
+        {
+          "iid": 41,
+          "type": "urn:loock-spec:property:ver-internal:0000001c:loock-v06:1",
+          "description": "ver-internal",
+          "format": "string",
+          "access": [
+            "read",
+            "notify"
+          ]
+        },
+        {
+          "iid": 42,
+          "type": "urn:loock-spec:property:motiondetection:00000013:loock-v06:1",
+          "description": "motiondetection",
+          "format": "bool",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "iid": 1,
+          "type": "urn:loock-spec:action:rpc-doorbell:00002801:loock-v06:1",
+          "description": "rpc-doorbell",
+          "in": [],
+          "out": []
+        },
+        {
+          "iid": 2,
+          "type": "urn:loock-spec:action:rpc-preview:00002802:loock-v06:1",
+          "description": "rpc-preview",
+          "in": [],
+          "out": []
+        },
+        {
+          "iid": 3,
+          "type": "urn:loock-spec:action:rpc-record:00002803:loock-v06:1",
+          "description": "rpc-record",
+          "in": [],
+          "out": []
+        },
+        {
+          "iid": 4,
+          "type": "urn:loock-spec:action:format-sdcard:00002804:loock-v06:1",
+          "description": "format-sdcard",
+          "in": [],
+          "out": []
+        },
+        {
+          "iid": 5,
+          "type": "urn:loock-spec:action:stop-living:00002805:loock-v06:1",
+          "description": "stop-living",
+          "in": [],
+          "out": []
+        },
+        {
+          "iid": 6,
+          "type": "urn:loock-spec:action:system-reboot:00002806:loock-v06:1",
+          "description": "system-reboot",
+          "in": [],
+          "out": []
+        },
+        {
+          "iid": 7,
+          "type": "urn:loock-spec:action:sync-setting-ask:00002807:loock-v06:1",
+          "description": "sync-setting-ask",
+          "in": [],
+          "out": []
+        }
+      ]
+    }
+  ]
+}

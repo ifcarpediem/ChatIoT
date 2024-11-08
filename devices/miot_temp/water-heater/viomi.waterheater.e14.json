@@ -1,0 +1,320 @@
+{
+  "type": "urn:miot-spec-v2:device:water-heater:0000A02A:viomi-e14:1",
+  "description": "Water Heater",
+  "services": [
+    {
+      "iid": 1,
+      "type": "urn:miot-spec-v2:service:device-information:00007801:viomi-e14:1",
+      "description": "Device Information",
+      "properties": [
+        {
+          "iid": 4,
+          "type": "urn:miot-spec-v2:property:firmware-revision:00000005:viomi-e14:1",
+          "description": "Current Firmware Version",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:manufacturer:00000001:viomi-e14:1",
+          "description": "Device Manufacturer",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:property:model:00000002:viomi-e14:1",
+          "description": "Device Model",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:miot-spec-v2:property:serial-number:00000003:viomi-e14:1",
+          "description": "Device Serial Number",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        }
+      ]
+    },
+    {
+      "iid": 2,
+      "type": "urn:miot-spec-v2:service:water-heater:0000783E:viomi-e14:1",
+      "description": "Water Heater",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:fault:00000009:viomi-e14:1",
+          "description": "Device Fault",
+          "format": "uint32",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "unit": "none",
+          "value-range": [
+            0,
+            100000000,
+            1
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:property:target-temperature:00000021:viomi-e14:1",
+          "description": "Target Temperature",
+          "format": "float",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ],
+          "unit": "celsius",
+          "value-range": [
+            30,
+            75,
+            1
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:miot-spec-v2:property:temperature:00000020:viomi-e14:1",
+          "description": "Temperature",
+          "format": "float",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "unit": "celsius",
+          "value-range": [
+            0,
+            100,
+            1
+          ]
+        },
+        {
+          "iid": 5,
+          "type": "urn:miot-spec-v2:property:mode:00000008:viomi-e14:1",
+          "description": "Mode",
+          "format": "uint8",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ],
+          "unit": "none",
+          "value-list": [
+            {
+              "value": 0,
+              "description": "Normal"
+            },
+            {
+              "value": 1,
+              "description": "Heat"
+            }
+          ]
+        },
+        {
+          "iid": 6,
+          "type": "urn:miot-spec-v2:property:on:00000006:viomi-e14:1",
+          "description": "Switch Status",
+          "format": "bool",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ],
+          "unit": "none"
+        },
+        {
+          "iid": 7,
+          "type": "urn:miot-spec-v2:property:status:00000007:viomi-e14:1",
+          "description": "Status",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "unit": "none",
+          "value-list": [
+            {
+              "value": 0,
+              "description": "Closed"
+            },
+            {
+              "value": 1,
+              "description": "Heat"
+            },
+            {
+              "value": 2,
+              "description": "Keep"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "iid": 3,
+      "type": "urn:viomi-spec:service:appointment:00007801:viomi-e14:1",
+      "description": "预约",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:viomi-spec:property:status:00000001:viomi-e14:1",
+          "description": "预约状态",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "unit": "none",
+          "value-list": [
+            {
+              "value": 0,
+              "description": "未预约"
+            },
+            {
+              "value": 1,
+              "description": "已预约（非预约时间内）"
+            },
+            {
+              "value": 2,
+              "description": "已预约（在预约时间内）"
+            }
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:viomi-spec:property:start-time:00000002:viomi-e14:1",
+          "description": "预约开始时间",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ],
+          "unit": "hours",
+          "value-range": [
+            0,
+            23,
+            1
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:viomi-spec:property:end-time:00000003:viomi-e14:1",
+          "description": "预约结束时间",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ],
+          "unit": "hours",
+          "value-range": [
+            0,
+            23,
+            1
+          ]
+        },
+        {
+          "iid": 4,
+          "type": "urn:viomi-spec:property:enable:00000004:viomi-e14:1",
+          "description": "预约开关",
+          "format": "bool",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ],
+          "unit": "none"
+        }
+      ],
+      "events": [
+        {
+          "iid": 1,
+          "type": "urn:viomi-spec:event:appoint-start:00005001:viomi-e14:1",
+          "description": "appoint-start",
+          "arguments": []
+        }
+      ]
+    },
+    {
+      "iid": 4,
+      "type": "urn:viomi-spec:service:function:00007802:viomi-e14:1",
+      "description": "功能",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:viomi-spec:property:bacteriostatic:00000001:viomi-e14:1",
+          "description": "抑菌",
+          "format": "bool",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:viomi-spec:property:power-break:00000002:viomi-e14:1",
+          "description": "出水时自动断电",
+          "format": "bool",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:viomi-spec:property:water-velocity:00000003:viomi-e14:1",
+          "description": "水流速(L/m)",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "value-range": [
+            0,
+            255,
+            1
+          ]
+        },
+        {
+          "iid": 4,
+          "type": "urn:viomi-spec:property:magnesium-rod:00000004:viomi-e14:1",
+          "description": "镁棒",
+          "format": "bool",
+          "access": [
+            "read",
+            "notify"
+          ]
+        },
+        {
+          "iid": 5,
+          "type": "urn:viomi-spec:property:left-hot-water:00000005:viomi-e14:1",
+          "description": "剩余热水量",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "unit": "percentage",
+          "value-range": [
+            0,
+            100,
+            1
+          ]
+        }
+      ]
+    }
+  ]
+}

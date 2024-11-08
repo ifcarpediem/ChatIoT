@@ -1,0 +1,74 @@
+{
+  "type": "urn:miot-spec-v2:device:motion-sensor:0000A014:lumi-v2:2",
+  "description": "Motion Sensor",
+  "services": [
+    {
+      "iid": 1,
+      "type": "urn:miot-spec-v2:service:device-information:00007801:lumi-v2:1",
+      "description": "Device Information",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:manufacturer:00000001:lumi-v2:1",
+          "description": "Device Manufacturer",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:property:model:00000002:lumi-v2:1",
+          "description": "Device Model",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:miot-spec-v2:property:serial-number:00000003:lumi-v2:1",
+          "description": "Device Serial Number",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 4,
+          "type": "urn:miot-spec-v2:property:firmware-revision:00000005:lumi-v2:1",
+          "description": "Current Firmware Version",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        }
+      ]
+    },
+    {
+      "iid": 2,
+      "type": "urn:miot-spec-v2:service:motion-sensor:00007825:lumi-v2:1",
+      "description": "Motion Sensor",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:motion-state:0000007D:lumi-v2:1",
+          "description": "Motion State",
+          "format": "bool",
+          "access": [
+            "read",
+            "notify"
+          ]
+        }
+      ],
+      "events": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:event:motion-detected:00005001:lumi-v2:2",
+          "description": "Motion Detected",
+          "arguments": []
+        }
+      ]
+    }
+  ]
+}

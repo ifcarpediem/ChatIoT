@@ -1,0 +1,101 @@
+{
+  "type": "urn:miot-spec-v2:device:light:0000A001:huayi-kin2:1",
+  "description": "Light",
+  "services": [
+    {
+      "iid": 1,
+      "type": "urn:miot-spec-v2:service:device-information:00007801:huayi-kin2:1",
+      "description": "Device Information",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:manufacturer:00000001:huayi-kin2:1",
+          "description": "Device Manufacturer",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:property:model:00000002:huayi-kin2:1",
+          "description": "Device Model",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:miot-spec-v2:property:serial-number:00000003:huayi-kin2:1",
+          "description": "Device Serial Number",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 4,
+          "type": "urn:miot-spec-v2:property:firmware-revision:00000005:huayi-kin2:1",
+          "description": "Current Firmware Version",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        }
+      ]
+    },
+    {
+      "iid": 2,
+      "type": "urn:miot-spec-v2:service:light:00007802:huayi-kin2:1",
+      "description": "Light",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:on:00000006:huayi-kin2:1",
+          "description": "Switch Status",
+          "format": "bool",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:miot-spec-v2:property:brightness:0000000D:huayi-kin2:1",
+          "description": "Brightness",
+          "format": "uint8",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ],
+          "unit": "percentage",
+          "value-range": [
+            1,
+            100,
+            1
+          ]
+        },
+        {
+          "iid": 5,
+          "type": "urn:miot-spec-v2:property:color-temperature:0000000F:huayi-kin2:1",
+          "description": "Color Temperature",
+          "format": "uint32",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ],
+          "unit": "kelvin",
+          "value-range": [
+            2700,
+            6500,
+            1
+          ]
+        }
+      ]
+    }
+  ]
+}

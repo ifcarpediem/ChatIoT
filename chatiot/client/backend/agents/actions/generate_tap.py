@@ -84,6 +84,7 @@ class GenerateTAP(Action):
             say_to_user = rsp_json["Say_to_user"]
             translator = Translator()
             translator.deploy_tap(self.user_request, tap)
+            self.user_request = None
             return Message(role=self.name, content=say_to_user, send_to=["User"], cause_by="Finish", sent_from="TAPGenerator")
         elif rsp_json["AskUser"] == "AskUser":
             say_to_user = rsp_json["Say_to_user"]

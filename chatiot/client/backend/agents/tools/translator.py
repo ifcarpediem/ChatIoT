@@ -158,7 +158,7 @@ class Translator:
                         trigger_value = trigger_value_str
                     break
             if op == "==":
-                trigger_yaml = f'''platform: numeric_state
+                trigger_yaml = f'''trigger: numeric_state
       entity_id: {trigger_entity_id}
       attribute: {trigger_field_str}
       above: {trigger_value-1}

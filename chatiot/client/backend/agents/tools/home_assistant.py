@@ -242,12 +242,18 @@ class HomeAssistantApi:
                 if identifier[0] == 'xiaomi_miot':
                     area_id = device['area_id']
                     model = device['model']
+                    # 新增name
+                    # 条件判断name_by_user是否为null，不为空则使用name_by_user，否则使用name
+                    name = device['name_by_user']
+                    if name is None:
+                        name = device['name']
                     if '-' in identifier[1]:
                         mac_address = identifier[1].split('-')[0]
                     else:
                         mac_address = identifier[1]
                     miot_device_info = {
                         'id': device_id_counter,
+                        'name': name,
                         'area': area_id if area_id else 'unknown',
                         'model': model if model else 'unknown',
                         'mac_address': mac_address,
@@ -303,6 +309,7 @@ class HomeAssistantApi:
             model = device['model']
             info = get_json(f'temp/miot/info/{model}.json')
             single_device_context['id'] = device['id']
+            single_device_context['name'] = device['name']
             single_device_context['area'] = device['area']
             single_device_context['type'] = info['type']
             services = info['services']
@@ -328,6 +335,7 @@ class HomeAssistantApi:
             for camera in camera_list:
                 single_device_context = {}
                 single_device_context['id'] = len(device_context) + 1
+                single_device_context['name'] = camera['name']
                 single_device_context['area'] = camera['area']
                 single_device_context['type'] = 'camera'
                 single_device_context['services'] = {}

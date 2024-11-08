@@ -1,0 +1,1179 @@
+{
+  "type": "urn:miot-spec-v2:device:vacuum:0000A006:dreame-mc1808:2",
+  "description": "Robot Cleaner",
+  "services": [
+    {
+      "iid": 2,
+      "type": "urn:miot-spec-v2:service:battery:00007805:dreame-mc1808:1",
+      "description": "Battery",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:battery-level:00000014:dreame-mc1808:1",
+          "description": "Battery Level",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "unit": "percentage",
+          "value-range": [
+            0,
+            100,
+            1
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:property:charging-state:00000015:dreame-mc1808:1",
+          "description": "Charging State",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "value-list": [
+            {
+              "value": 1,
+              "description": "Charging"
+            },
+            {
+              "value": 2,
+              "description": "Not Charging"
+            },
+            {
+              "value": 4,
+              "description": "Charging"
+            },
+            {
+              "value": 5,
+              "description": "Go Charging"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:action:start-charge:00002802:dreame-mc1808:1",
+          "description": "Start Charge",
+          "in": [],
+          "out": []
+        }
+      ],
+      "events": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:event:low-battery:00005003:dreame-mc1808:1",
+          "description": "Low Battery",
+          "arguments": []
+        }
+      ]
+    },
+    {
+      "iid": 1,
+      "type": "urn:miot-spec-v2:service:device-information:00007801:dreame-mc1808:1",
+      "description": "Device Information",
+      "properties": [
+        {
+          "iid": 4,
+          "type": "urn:miot-spec-v2:property:firmware-revision:00000005:dreame-mc1808:1",
+          "description": "Current Firmware Version",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:manufacturer:00000001:dreame-mc1808:1",
+          "description": "Device Manufacturer",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:property:model:00000002:dreame-mc1808:1",
+          "description": "Device Model",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:miot-spec-v2:property:serial-number:00000003:dreame-mc1808:1",
+          "description": "Device Serial Number",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        }
+      ]
+    },
+    {
+      "iid": 3,
+      "type": "urn:miot-spec-v2:service:vacuum:00007810:dreame-mc1808:1",
+      "description": "Robot Cleaner",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:fault:00000009:dreame-mc1808:1",
+          "description": "Device Fault",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "value-list": [
+            {
+              "value": 0,
+              "description": "No faults"
+            }
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:property:status:00000007:dreame-mc1808:1",
+          "description": "Status",
+          "format": "int8",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "value-list": [
+            {
+              "value": 1,
+              "description": "Sweeping"
+            },
+            {
+              "value": 2,
+              "description": "Idle"
+            },
+            {
+              "value": 3,
+              "description": "Paused"
+            },
+            {
+              "value": 4,
+              "description": "Error"
+            },
+            {
+              "value": 5,
+              "description": "Go Charging"
+            },
+            {
+              "value": 6,
+              "description": "Charging"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:action:start-sweep:00002804:dreame-mc1808:1",
+          "description": "Start Sweep",
+          "in": [],
+          "out": []
+        },
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:action:stop-sweeping:00002805:dreame-mc1808:1",
+          "description": "Stop Sweeping",
+          "in": [],
+          "out": []
+        }
+      ]
+    },
+    {
+      "iid": 17,
+      "type": "urn:miot-spec-v2:service:identify:0000782C:dreame-mc1808:1",
+      "description": "Identify",
+      "actions": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:action:identify:00002801:dreame-mc1808:1",
+          "description": "Identify",
+          "in": [],
+          "out": []
+        }
+      ]
+    },
+    {
+      "iid": 26,
+      "type": "urn:miot-spec-v2:service:brush-cleaner:0000784C:dreame-mc1808:1",
+      "description": "Main Cleaning Brush",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:brush-left-time:00000086:dreame-mc1808:1",
+          "description": "Brush Left Time",
+          "format": "uint16",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "unit": "hour",
+          "value-range": [
+            0,
+            300,
+            1
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:property:brush-life-level:00000085:dreame-mc1808:1",
+          "description": "Brush Life Level",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "unit": "percentage",
+          "value-range": [
+            0,
+            100,
+            1
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:action:reset-brush-life:00002830:dreame-mc1808:1",
+          "description": "Reset Brush Life",
+          "in": [],
+          "out": []
+        }
+      ]
+    },
+    {
+      "iid": 27,
+      "type": "urn:miot-spec-v2:service:filter:0000780B:dreame-mc1808:1",
+      "description": "Filter",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:filter-life-level:0000001E:dreame-mc1808:1",
+          "description": "Filter Life Level",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "unit": "percentage",
+          "value-range": [
+            0,
+            100,
+            1
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:property:filter-left-time:0000001F:dreame-mc1808:1",
+          "description": "Filter Left Time",
+          "format": "uint16",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "unit": "hour",
+          "value-range": [
+            0,
+            300,
+            1
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:action:reset-filter-life:00002803:dreame-mc1808:1",
+          "description": "Reset Filter Life",
+          "in": [],
+          "out": []
+        }
+      ]
+    },
+    {
+      "iid": 28,
+      "type": "urn:miot-spec-v2:service:brush-cleaner:0000784C:dreame-mc1808:1",
+      "description": "Side Cleaning Brush",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:brush-left-time:00000086:dreame-mc1808:1",
+          "description": "Brush Left Time",
+          "format": "uint16",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "unit": "hour",
+          "value-range": [
+            0,
+            300,
+            1
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:property:brush-life-level:00000085:dreame-mc1808:1",
+          "description": "Brush Life Level",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "unit": "percentage",
+          "value-range": [
+            0,
+            100,
+            1
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:action:reset-brush-life:00002830:dreame-mc1808:1",
+          "description": "Reset Brush Life",
+          "in": [],
+          "out": []
+        }
+      ]
+    },
+    {
+      "iid": 18,
+      "type": "urn:dreame-spec:service:clean:00000001:dreame-mc1808:1",
+      "description": "clean",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:dreame-spec:property:work-mode:00000002:dreame-mc1808:1",
+          "description": "工作模式",
+          "format": "int32",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "unit": "none",
+          "value-range": [
+            0,
+            17,
+            1
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:dreame-spec:property:time-duration:00000003:dreame-mc1808:1",
+          "description": "time-duration",
+          "format": "int32",
+          "access": [
+            "notify"
+          ],
+          "unit": "minutes",
+          "value-range": [
+            0,
+            32767,
+            1
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:dreame-spec:property:size:00000004:dreame-mc1808:1",
+          "description": "size",
+          "format": "string",
+          "access": [
+            "notify"
+          ]
+        },
+        {
+          "iid": 4,
+          "type": "urn:dreame-spec:property:area:00000005:dreame-mc1808:1",
+          "description": "area",
+          "format": "string",
+          "access": [
+            "read",
+            "write"
+          ]
+        },
+        {
+          "iid": 5,
+          "type": "urn:dreame-spec:property:timer:00000006:dreame-mc1808:1",
+          "description": "timer",
+          "format": "string",
+          "access": [
+            "read",
+            "write"
+          ]
+        },
+        {
+          "iid": 6,
+          "type": "urn:dreame-spec:property:mode:00000007:dreame-mc1808:1",
+          "description": "清扫模式",
+          "format": "int32",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ],
+          "unit": "none",
+          "value-list": [
+            {
+              "value": 0,
+              "description": "安静"
+            },
+            {
+              "value": 1,
+              "description": "标准"
+            },
+            {
+              "value": 2,
+              "description": "中档"
+            },
+            {
+              "value": 3,
+              "description": "强力"
+            }
+          ]
+        },
+        {
+          "iid": 8,
+          "type": "urn:dreame-spec:property:delete-timer:00000009:dreame-mc1808:1",
+          "description": "delete-timer",
+          "format": "int32",
+          "access": [
+            "write"
+          ],
+          "value-range": [
+            0,
+            100,
+            1
+          ]
+        },
+        {
+          "iid": 9,
+          "type": "urn:dreame-spec:property:water-box:0000000A:dreame-mc1808:1",
+          "description": "water-box",
+          "format": "int32",
+          "access": [
+            "notify"
+          ],
+          "value-range": [
+            0,
+            10,
+            1
+          ]
+        },
+        {
+          "iid": 11,
+          "type": "urn:dreame-spec:property:object-name:00000001:dreame-mc1808:1",
+          "description": "清扫地图文件名",
+          "format": "string",
+          "access": [
+            "notify"
+          ],
+          "unit": "none"
+        },
+        {
+          "iid": 12,
+          "type": "urn:dreame-spec:property:start-time:0000000c:dreame-mc1808:1",
+          "description": "",
+          "format": "string",
+          "access": [
+            "notify"
+          ]
+        },
+        {
+          "iid": 13,
+          "type": "urn:dreame-spec:property:total-clean-time:0000000d:dreame-mc1808:1",
+          "description": "",
+          "format": "uint32",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "unit": "minutes",
+          "value-range": [
+            0,
+            4294967295,
+            1
+          ]
+        },
+        {
+          "iid": 14,
+          "type": "urn:dreame-spec:property:total-clean-times:0000000e:dreame-mc1808:1",
+          "description": "",
+          "format": "uint32",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "value-range": [
+            0,
+            4294967295,
+            1
+          ]
+        },
+        {
+          "iid": 15,
+          "type": "urn:dreame-spec:property:total-clean-area:0000000f:dreame-mc1808:1",
+          "description": "",
+          "format": "uint32",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "value-range": [
+            0,
+            4294967295,
+            1
+          ]
+        },
+        {
+          "iid": 16,
+          "type": "urn:dreame-spec:property:clean-log-start-time:00000010:dreame-mc1808:1",
+          "description": "",
+          "format": "uint32",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "value-range": [
+            0,
+            4294967295,
+            1
+          ]
+        },
+        {
+          "iid": 17,
+          "type": "urn:dreame-spec:property:button-led:00000011:dreame-mc1808:1",
+          "description": "",
+          "format": "uint16",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "value-range": [
+            0,
+            100,
+            1
+          ]
+        },
+        {
+          "iid": 18,
+          "type": "urn:dreame-spec:property:task-done:00000012:dreame-mc1808:1",
+          "description": "",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "value-list": [
+            {
+              "value": 0,
+              "description": ""
+            },
+            {
+              "value": 1,
+              "description": ""
+            }
+          ]
+        },
+        {
+          "iid": 20,
+          "type": "urn:dreame-spec:property:mopmode:0000000b:dreame-mc1808:2",
+          "description": "拖地模式下水量设置",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "unit": "none",
+          "value-list": [
+            {
+              "value": 1,
+              "description": "低档"
+            },
+            {
+              "value": 2,
+              "description": "中档"
+            },
+            {
+              "value": 3,
+              "description": "高档"
+            }
+          ]
+        },
+        {
+          "iid": 21,
+          "type": "urn:dreame-spec:property:clean-info:00000008:dreame-mc1808:2",
+          "description": "clean-info",
+          "format": "string",
+          "access": [
+            "write"
+          ]
+        },
+        {
+          "iid": 22,
+          "type": "urn:dreame-spec:property:clean-status:00000013:dreame-mc1808:2",
+          "description": "clean-status",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "value-range": [
+            0,
+            100,
+            1
+          ]
+        },
+        {
+          "iid": 23,
+          "type": "urn:dreame-spec:property:save-map-status:00000014:dreame-mc1808:2",
+          "description": "save-map-status",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ],
+          "value-list": [
+            {
+              "value": 0,
+              "description": "Close"
+            },
+            {
+              "value": 1,
+              "description": "Open"
+            }
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "iid": 1,
+          "type": "urn:dreame-spec:action:start-clean:0000000C:dreame-mc1808:1",
+          "description": "开始清扫",
+          "in": [],
+          "out": []
+        },
+        {
+          "iid": 2,
+          "type": "urn:dreame-spec:action:stop-clean:0000000D:dreame-mc1808:1",
+          "description": "stop-clean",
+          "in": [],
+          "out": []
+        }
+      ],
+      "events": [
+        {
+          "iid": 1,
+          "type": "urn:dreame-spec:event:finish-clean:0000000E:dreame-mc1808:1",
+          "description": "完成清扫",
+          "arguments": [
+            11,
+            12,
+            3,
+            2
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:dreame-spec:event:finish-with-waterbox:00005001:dreame-mc1808:1",
+          "description": "",
+          "arguments": []
+        },
+        {
+          "iid": 3,
+          "type": "urn:dreame-spec:event:clean-without-box:00005002:dreame-mc1808:1",
+          "description": "",
+          "arguments": []
+        }
+      ]
+    },
+    {
+      "iid": 19,
+      "type": "urn:dreame-spec:service:consumable:0000000F:dreame-mc1808:1",
+      "description": "consumable",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:dreame-spec:property:life-sieve:00000010:dreame-mc1808:1",
+          "description": "life-sieve",
+          "format": "string",
+          "access": [
+            "read",
+            "write"
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:dreame-spec:property:life-brush-side:00000011:dreame-mc1808:1",
+          "description": "life-brush-side",
+          "format": "string",
+          "access": [
+            "read",
+            "write"
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:dreame-spec:property:life-brush-main:00000012:dreame-mc1808:1",
+          "description": "life-brush-main",
+          "format": "string",
+          "access": [
+            "read",
+            "write"
+          ]
+        }
+      ],
+      "events": [
+        {
+          "iid": 1,
+          "type": "urn:dreame-spec:event:warn-sieve:00000015:dreame-mc1808:1",
+          "description": "warn-sieve",
+          "arguments": []
+        },
+        {
+          "iid": 2,
+          "type": "urn:dreame-spec:event:warn-brush-side:00000016:dreame-mc1808:1",
+          "description": "warn-brush-side",
+          "arguments": []
+        },
+        {
+          "iid": 3,
+          "type": "urn:dreame-spec:event:warn-brush-main:00000017:dreame-mc1808:1",
+          "description": "warn-brush-main",
+          "arguments": []
+        },
+        {
+          "iid": 4,
+          "type": "urn:dreame-spec:event:warn-sensor:00000018:dreame-mc1808:1",
+          "description": "warn-sensor",
+          "arguments": []
+        },
+        {
+          "iid": 5,
+          "type": "urn:dreame-spec:event:warn-duster:00000019:dreame-mc1808:1",
+          "description": "warn-duster",
+          "arguments": []
+        },
+        {
+          "iid": 6,
+          "type": "urn:dreame-spec:event:sieve-will-invalid:00005001:dreame-mc1808:2",
+          "description": "",
+          "arguments": []
+        },
+        {
+          "iid": 7,
+          "type": "urn:dreame-spec:event:side-br-will-invalid:00005002:dreame-mc1808:2",
+          "description": "",
+          "arguments": []
+        },
+        {
+          "iid": 8,
+          "type": "urn:dreame-spec:event:main-br-will-invalid:00005003:dreame-mc1808:2",
+          "description": "",
+          "arguments": []
+        }
+      ]
+    },
+    {
+      "iid": 20,
+      "type": "urn:dreame-spec:service:annoy:0000001A:dreame-mc1808:1",
+      "description": "annoy",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:dreame-spec:property:enable:0000001B:dreame-mc1808:1",
+          "description": "enable",
+          "format": "bool",
+          "access": [
+            "read",
+            "write"
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:dreame-spec:property:start-time:0000001C:dreame-mc1808:1",
+          "description": "start-time",
+          "format": "string",
+          "access": [
+            "read",
+            "write"
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:dreame-spec:property:stop-time:0000001D:dreame-mc1808:1",
+          "description": "stop-time",
+          "format": "string",
+          "access": [
+            "read",
+            "write"
+          ]
+        }
+      ]
+    },
+    {
+      "iid": 21,
+      "type": "urn:dreame-spec:service:remote:0000001E:dreame-mc1808:1",
+      "description": "remote",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:dreame-spec:property:deg:0000001F:dreame-mc1808:1",
+          "description": "deg",
+          "format": "string",
+          "access": [
+            "write"
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:dreame-spec:property:speed:00000020:dreame-mc1808:1",
+          "description": "speed",
+          "format": "string",
+          "access": [
+            "write"
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "iid": 1,
+          "type": "urn:dreame-spec:action:start-remote:00000021:dreame-mc1808:1",
+          "description": "start-remote",
+          "in": [
+            1,
+            2
+          ],
+          "out": []
+        },
+        {
+          "iid": 2,
+          "type": "urn:dreame-spec:action:stop-remote:00000022:dreame-mc1808:1",
+          "description": "stop-remote",
+          "in": [],
+          "out": []
+        },
+        {
+          "iid": 3,
+          "type": "urn:dreame-spec:action:exit-remote:00000023:dreame-mc1808:1",
+          "description": "exit-remote",
+          "in": [],
+          "out": []
+        }
+      ]
+    },
+    {
+      "iid": 22,
+      "type": "urn:dreame-spec:service:warn:00000024:dreame-mc1808:1",
+      "description": "warn",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:dreame-spec:property:warn-code:00000049:dreame-mc1808:1",
+          "description": "warn-code",
+          "format": "int32",
+          "access": [
+            "notify"
+          ],
+          "value-list": [
+            {
+              "value": 0,
+              "description": "normal"
+            },
+            {
+              "value": 1,
+              "description": "drop"
+            },
+            {
+              "value": 2,
+              "description": "cliff"
+            },
+            {
+              "value": 3,
+              "description": "bumper"
+            },
+            {
+              "value": 4,
+              "description": "gesture"
+            },
+            {
+              "value": 5,
+              "description": "bumper-repeat"
+            },
+            {
+              "value": 6,
+              "description": "drop-repeat"
+            },
+            {
+              "value": 7,
+              "description": "optical-flow"
+            },
+            {
+              "value": 8,
+              "description": "no-box"
+            },
+            {
+              "value": 9,
+              "description": "no-tankbox"
+            },
+            {
+              "value": 10,
+              "description": "waterbox-empty"
+            },
+            {
+              "value": 11,
+              "description": "box-full"
+            },
+            {
+              "value": 12,
+              "description": "brush"
+            },
+            {
+              "value": 13,
+              "description": "side-brush"
+            },
+            {
+              "value": 14,
+              "description": "fan"
+            },
+            {
+              "value": 15,
+              "description": "left-wheel-motor"
+            },
+            {
+              "value": 16,
+              "description": "right-wheel-motor"
+            },
+            {
+              "value": 17,
+              "description": "turn-suffocate"
+            },
+            {
+              "value": 18,
+              "description": "forward-suffocate"
+            },
+            {
+              "value": 19,
+              "description": "charger-get"
+            },
+            {
+              "value": 20,
+              "description": "battery-low"
+            },
+            {
+              "value": 21,
+              "description": "charge-fault"
+            },
+            {
+              "value": 22,
+              "description": "battery-percentage"
+            },
+            {
+              "value": 23,
+              "description": "heart"
+            },
+            {
+              "value": 24,
+              "description": "camera-occlusion"
+            },
+            {
+              "value": 25,
+              "description": "camera-fault"
+            },
+            {
+              "value": 26,
+              "description": "event-battery"
+            },
+            {
+              "value": 27,
+              "description": "forward-looking"
+            },
+            {
+              "value": 28,
+              "description": "gyroscope"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "iid": 1,
+          "type": "urn:dreame-spec:event:device-event:00000025:dreame-mc1808:1",
+          "description": "device-event",
+          "arguments": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "iid": 23,
+      "type": "urn:dreame-spec:service:map:00000041:dreame-mc1808:1",
+      "description": "map",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:dreame-spec:property:map-view:00000042:dreame-mc1808:1",
+          "description": "map-view",
+          "format": "string",
+          "access": [
+            "read",
+            "notify"
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:dreame-spec:property:frame-info:00000043:dreame-mc1808:1",
+          "description": "frame-info",
+          "format": "string",
+          "access": [
+            "write"
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:dreame-spec:property:object-name:00000001:dreame-mc1808:1",
+          "description": "",
+          "format": "string",
+          "access": [
+            "notify"
+          ],
+          "unit": "none"
+        },
+        {
+          "iid": 4,
+          "type": "urn:dreame-spec:property:map-extend-data:00000002:dreame-mc1808:2",
+          "description": "map-extend-data",
+          "format": "string",
+          "access": [],
+          "unit": "none"
+        },
+        {
+          "iid": 5,
+          "type": "urn:dreame-spec:property:robot-time:00000003:dreame-mc1808:2",
+          "description": "",
+          "format": "int64",
+          "access": [],
+          "unit": "none",
+          "value-range": [
+            0,
+            100000000000000,
+            1
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "iid": 1,
+          "type": "urn:dreame-spec:action:map-req:00000044:dreame-mc1808:1",
+          "description": "map-req",
+          "in": [
+            2
+          ],
+          "out": []
+        },
+        {
+          "iid": 2,
+          "type": "urn:dreame-spec:action:update-map:00002801:dreame-mc1808:2",
+          "description": "update-map",
+          "in": [
+            4
+          ],
+          "out": []
+        }
+      ]
+    },
+    {
+      "iid": 24,
+      "type": "urn:dreame-spec:service:audio:00000045:dreame-mc1808:1",
+      "description": "audio",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:dreame-spec:property:volume:00000046:dreame-mc1808:1",
+          "description": "volume",
+          "format": "int32",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ],
+          "value-range": [
+            0,
+            100,
+            1
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:dreame-spec:property:voice-packets:00000048:dreame-mc1808:1",
+          "description": "语音包ID",
+          "format": "string",
+          "access": [
+            "read",
+            "write"
+          ],
+          "unit": "none"
+        }
+      ],
+      "actions": [
+        {
+          "iid": 1,
+          "type": "urn:dreame-spec:action:position:00002801:dreame-mc1808:1",
+          "description": "",
+          "in": [],
+          "out": []
+        },
+        {
+          "iid": 2,
+          "type": "urn:dreame-spec:action:set-voice:00002802:dreame-mc1808:1",
+          "description": "",
+          "in": [],
+          "out": []
+        },
+        {
+          "iid": 3,
+          "type": "urn:dreame-spec:action:play-sound:00002803:dreame-mc1808:1",
+          "description": "",
+          "in": [],
+          "out": []
+        }
+      ],
+      "events": [
+        {
+          "iid": 1,
+          "type": "urn:dreame-spec:event:voice-status:00005001:dreame-mc1808:1",
+          "description": "",
+          "arguments": []
+        }
+      ]
+    },
+    {
+      "iid": 25,
+      "type": "urn:dreame-spec:service:time:00007801:dreame-mc1808:1",
+      "description": "",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:dreame-spec:property:time-zone:00000001:dreame-mc1808:1",
+          "description": "",
+          "format": "string",
+          "access": [
+            "read",
+            "notify"
+          ]
+        }
+      ]
+    }
+  ]
+}

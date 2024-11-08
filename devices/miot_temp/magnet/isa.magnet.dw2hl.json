@@ -1,0 +1,109 @@
+{
+  "type": "urn:miot-spec-v2:device:magnet-sensor:0000A016:isa-dw2hl:1",
+  "description": "Magnet Sensor",
+  "services": [
+    {
+      "iid": 1,
+      "type": "urn:miot-spec-v2:service:device-information:00007801:isa-dw2hl:1",
+      "description": "Device Information",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:manufacturer:00000001:isa-dw2hl:1",
+          "description": "Device Manufacturer",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:property:model:00000002:isa-dw2hl:1",
+          "description": "Device Model",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:miot-spec-v2:property:serial-number:00000003:isa-dw2hl:1",
+          "description": "Device Serial Number",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 4,
+          "type": "urn:miot-spec-v2:property:firmware-revision:00000005:isa-dw2hl:1",
+          "description": "Current Firmware Version",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        }
+      ]
+    },
+    {
+      "iid": 2,
+      "type": "urn:miot-spec-v2:service:magnet-sensor:00007827:isa-dw2hl:1",
+      "description": "Magnet Sensor",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:illumination:0000004E:isa-dw2hl:1",
+          "description": "Illumination",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "value-list": [
+            {
+              "value": 1,
+              "description": "Weak"
+            },
+            {
+              "value": 2,
+              "description": "Strong"
+            }
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:property:contact-state:0000007C:isa-dw2hl:1",
+          "description": "Contact State",
+          "format": "bool",
+          "access": [
+            "read",
+            "notify"
+          ]
+        }
+      ]
+    },
+    {
+      "iid": 3,
+      "type": "urn:miot-spec-v2:service:battery:00007805:isa-dw2hl:1",
+      "description": "Battery",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:battery-level:00000014:isa-dw2hl:1",
+          "description": "Battery Level",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "unit": "percentage",
+          "value-range": [
+            0,
+            100,
+            1
+          ]
+        }
+      ]
+    }
+  ]
+}

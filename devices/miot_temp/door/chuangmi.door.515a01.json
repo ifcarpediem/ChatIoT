@@ -1,0 +1,879 @@
+{
+  "type": "urn:miot-spec-v2:device:door:0000A041:chuangmi-515a01:4",
+  "description": "Door",
+  "services": [
+    {
+      "iid": 1,
+      "type": "urn:miot-spec-v2:service:device-information:00007801:chuangmi-515a01:1",
+      "description": "Device Information",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:manufacturer:00000001:chuangmi-515a01:1",
+          "description": "Device Manufacturer",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:property:model:00000002:chuangmi-515a01:1",
+          "description": "Device Model",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:miot-spec-v2:property:serial-number:00000003:chuangmi-515a01:1",
+          "description": "Device ID",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 4,
+          "type": "urn:miot-spec-v2:property:firmware-revision:00000005:chuangmi-515a01:1",
+          "description": "Current Firmware Version",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 5,
+          "type": "urn:miot-spec-v2:property:serial-no:000000FF:chuangmi-515a01:1",
+          "description": "Serial Number",
+          "format": "string",
+          "access": [
+            "read",
+            "notify"
+          ]
+        }
+      ]
+    },
+    {
+      "iid": 2,
+      "type": "urn:miot-spec-v2:service:lock:00007855:chuangmi-515a01:1",
+      "description": "Lock",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:abnormal-condition:00000095:chuangmi-515a01:1",
+          "description": "Abnormal Condition",
+          "format": "uint8",
+          "access": [],
+          "value-list": [
+            {
+              "value": 1,
+              "description": "Frequent Unlocking Failed By Multiple Methods"
+            },
+            {
+              "value": 2,
+              "description": "Frequent Unlocking Failed By Password"
+            },
+            {
+              "value": 3,
+              "description": "Frequent Unlocking Failed By Fingerprint"
+            },
+            {
+              "value": 4,
+              "description": "Frequent Unlocking Failed By NFC"
+            },
+            {
+              "value": 5,
+              "description": "Frequent Unlocking Failed By Face"
+            },
+            {
+              "value": 8,
+              "description": "Frequent Unlocking Failed By Key"
+            },
+            {
+              "value": 9,
+              "description": "Door Lock Was Damaged"
+            },
+            {
+              "value": 10,
+              "description": "Locked Unsuccessfully"
+            },
+            {
+              "value": 11,
+              "description": "Unlock From Inside After Leaving Home"
+            },
+            {
+              "value": 12,
+              "description": "Door Lock Was Reset"
+            },
+            {
+              "value": 15,
+              "description": "Door Lock Fingerprint Sensor Error"
+            },
+            {
+              "value": 16,
+              "description": "Door Lock Mechanical Failure"
+            },
+            {
+              "value": 17,
+              "description": "Door Lock Main Part Failure"
+            },
+            {
+              "value": 23,
+              "description": "Leaving The Door Open Timed Out"
+            },
+            {
+              "value": 25,
+              "description": "Door Was Opened Forcefully"
+            },
+            {
+              "value": 26,
+              "description": "Fire Waring"
+            },
+            {
+              "value": 27,
+              "description": "Hijack Password Alarm"
+            },
+            {
+              "value": 28,
+              "description": "Hijack Fingerprint Alarm"
+            },
+            {
+              "value": 29,
+              "description": "Too Many Fingerprint Recognition Failures"
+            },
+            {
+              "value": 30,
+              "description": "Too Many Times To Open The Door With Wrong Password"
+            },
+            {
+              "value": 31,
+              "description": "Too Many NFC Card Recognition Failures"
+            },
+            {
+              "value": 32,
+              "description": "Too Many Door Opening Failures"
+            }
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:property:operation-method:00000096:chuangmi-515a01:1",
+          "description": "Operation Method",
+          "format": "uint8",
+          "access": [],
+          "value-list": [
+            {
+              "value": 1,
+              "description": "Mobile Phone"
+            },
+            {
+              "value": 2,
+              "description": "Finger Print"
+            },
+            {
+              "value": 3,
+              "description": "PassWord"
+            },
+            {
+              "value": 4,
+              "description": "NFC"
+            },
+            {
+              "value": 5,
+              "description": "Face"
+            },
+            {
+              "value": 8,
+              "description": "Lock Key"
+            },
+            {
+              "value": 9,
+              "description": "One Time Password"
+            },
+            {
+              "value": 10,
+              "description": "Periodic Password"
+            },
+            {
+              "value": 13,
+              "description": "Two Step Verification"
+            },
+            {
+              "value": 15,
+              "description": "Manual"
+            },
+            {
+              "value": 16,
+              "description": "Auto"
+            }
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:miot-spec-v2:property:operation-id:00000097:chuangmi-515a01:1",
+          "description": "Operation ID",
+          "format": "uint16",
+          "access": [],
+          "value-range": [
+            0,
+            65535,
+            1
+          ]
+        },
+        {
+          "iid": 4,
+          "type": "urn:miot-spec-v2:property:current-time:00000098:chuangmi-515a01:1",
+          "description": "Current Time",
+          "format": "string",
+          "access": []
+        },
+        {
+          "iid": 5,
+          "type": "urn:miot-spec-v2:property:operation-position:00000128:chuangmi-515a01:1",
+          "description": "Operation Position",
+          "format": "uint8",
+          "access": [],
+          "value-list": [
+            {
+              "value": 1,
+              "description": "Indoor"
+            },
+            {
+              "value": 2,
+              "description": "Outdoor"
+            },
+            {
+              "value": 3,
+              "description": "Not Tell The Inside Or Outside Of The Door"
+            }
+          ]
+        },
+        {
+          "iid": 6,
+          "type": "urn:miot-spec-v2:property:lock-action:00000129:chuangmi-515a01:1",
+          "description": "Lock Action",
+          "format": "uint8",
+          "access": [],
+          "value-list": [
+            {
+              "value": 1,
+              "description": "Lock"
+            },
+            {
+              "value": 2,
+              "description": "Unlock"
+            }
+          ]
+        }
+      ],
+      "events": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:event:exception-occurred:00005011:chuangmi-515a01:1",
+          "description": "Exception Occurred",
+          "arguments": [
+            1,
+            4,
+            3
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:event:lock-event:00005033:chuangmi-515a01:1",
+          "description": "Lock Event",
+          "arguments": [
+            6,
+            5,
+            2,
+            3,
+            4
+          ]
+        }
+      ]
+    },
+    {
+      "iid": 5,
+      "type": "urn:miot-spec-v2:service:motion-detection:0000784F:chuangmi-515a01:1",
+      "description": "Motion Detection",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:motion-detection:00000056:chuangmi-515a01:1",
+          "description": "Motion Detection",
+          "format": "bool",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:property:alarm-interval:0000008F:chuangmi-515a01:1",
+          "description": "Alarm Interval",
+          "format": "uint8",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ],
+          "unit": "minutes",
+          "value-range": [
+            1,
+            30,
+            1
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:miot-spec-v2:property:detection-sensitivity:00000090:chuangmi-515a01:1",
+          "description": "Detection Sensitivity",
+          "format": "uint8",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ],
+          "value-list": [
+            {
+              "value": 1,
+              "description": "Low"
+            },
+            {
+              "value": 2,
+              "description": "High"
+            }
+          ]
+        },
+        {
+          "iid": 4,
+          "type": "urn:miot-spec-v2:property:motion-detection-start-time:00000091:chuangmi-515a01:1",
+          "description": "Motion Detection Start Time",
+          "format": "string",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ]
+        },
+        {
+          "iid": 5,
+          "type": "urn:miot-spec-v2:property:motion-detection-end-time:00000092:chuangmi-515a01:1",
+          "description": "Motion Detection End Time",
+          "format": "string",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ]
+        }
+      ]
+    },
+    {
+      "iid": 7,
+      "type": "urn:miot-spec-v2:service:video-doorbell:00007863:chuangmi-515a01:1",
+      "description": "Video Doorbell",
+      "properties": [
+        {
+          "iid": 10,
+          "type": "urn:miot-spec-v2:property:current-time:00000098:chuangmi-515a01:1",
+          "description": "Current Time",
+          "format": "string",
+          "access": []
+        }
+      ],
+      "events": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:event:doorbell-ring:00005013:chuangmi-515a01:1",
+          "description": "Doorbell Ring",
+          "arguments": [
+            10
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:miot-spec-v2:event:someone-passed-by:0000502C:chuangmi-515a01:1",
+          "description": "Someone Passed By",
+          "arguments": [
+            10
+          ]
+        },
+        {
+          "iid": 4,
+          "type": "urn:miot-spec-v2:event:doorbell-forcibly-removed:00005025:chuangmi-515a01:2",
+          "description": "Doorbell Forcibly Removed",
+          "arguments": [
+            10
+          ]
+        }
+      ]
+    },
+    {
+      "iid": 6,
+      "type": "urn:chuangmi-spec:service:settings:00007801:chuangmi-515a01:1",
+      "description": "settings",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:chuangmi-spec:property:stay-time:00000001:chuangmi-515a01:1",
+          "description": "stay-time",
+          "format": "int8",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ],
+          "unit": "seconds",
+          "value-list": [
+            {
+              "value": -1,
+              "description": "Close"
+            },
+            {
+              "value": 0,
+              "description": "Open"
+            },
+            {
+              "value": 5,
+              "description": "Second"
+            },
+            {
+              "value": 10,
+              "description": "Second"
+            },
+            {
+              "value": 15,
+              "description": "Second"
+            },
+            {
+              "value": 20,
+              "description": "Second"
+            }
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:chuangmi-spec:property:pir-recording-time:00000002:chuangmi-515a01:1",
+          "description": "pir-recording-time",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ],
+          "unit": "seconds",
+          "value-list": [
+            {
+              "value": 10,
+              "description": "Second"
+            },
+            {
+              "value": 20,
+              "description": "Second"
+            },
+            {
+              "value": 30,
+              "description": "Second"
+            },
+            {
+              "value": 40,
+              "description": "Second"
+            },
+            {
+              "value": 50,
+              "description": "Second"
+            },
+            {
+              "value": 60,
+              "description": "Second"
+            },
+            {
+              "value": 0,
+              "description": "Auto"
+            }
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:chuangmi-spec:property:video-interval:00000003:chuangmi-515a01:1",
+          "description": "video-interval",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ],
+          "unit": "seconds",
+          "value-list": [
+            {
+              "value": 0,
+              "description": "Second"
+            },
+            {
+              "value": 15,
+              "description": "Second"
+            },
+            {
+              "value": 30,
+              "description": "Second"
+            },
+            {
+              "value": 60,
+              "description": "Second"
+            },
+            {
+              "value": 180,
+              "description": "Second"
+            }
+          ]
+        },
+        {
+          "iid": 4,
+          "type": "urn:chuangmi-spec:property:pir-level:00000004:chuangmi-515a01:1",
+          "description": "pir-level",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ],
+          "value-list": [
+            {
+              "value": 1,
+              "description": "Low"
+            },
+            {
+              "value": 2,
+              "description": "Middle"
+            },
+            {
+              "value": 3,
+              "description": "Height"
+            }
+          ]
+        },
+        {
+          "iid": 5,
+          "type": "urn:chuangmi-spec:property:stay-detection-noti:00000005:chuangmi-515a01:1",
+          "description": "stay-detection-noti",
+          "format": "bool",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ]
+        },
+        {
+          "iid": 6,
+          "type": "urn:chuangmi-spec:property:ring-bell-call:00000006:chuangmi-515a01:1",
+          "description": "ring-bell-call",
+          "format": "bool",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ]
+        },
+        {
+          "iid": 7,
+          "type": "urn:chuangmi-spec:property:ring-bell-push:00000007:chuangmi-515a01:1",
+          "description": "ring-bell-push",
+          "format": "bool",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ]
+        },
+        {
+          "iid": 8,
+          "type": "urn:chuangmi-spec:property:ring-bell-wake:00000008:chuangmi-515a01:1",
+          "description": "ring-bell-wake",
+          "format": "bool",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ]
+        },
+        {
+          "iid": 9,
+          "type": "urn:chuangmi-spec:property:day-night-mode:00000009:chuangmi-515a01:1",
+          "description": "day-night-mode",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ],
+          "value-list": [
+            {
+              "value": 0,
+              "description": "Day"
+            },
+            {
+              "value": 1,
+              "description": "Night"
+            },
+            {
+              "value": 2,
+              "description": "Auto"
+            }
+          ]
+        },
+        {
+          "iid": 10,
+          "type": "urn:chuangmi-spec:property:wdr-switch:0000000a:chuangmi-515a01:1",
+          "description": "wdr-switch",
+          "format": "bool",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ]
+        },
+        {
+          "iid": 11,
+          "type": "urn:chuangmi-spec:property:warning:0000000b:chuangmi-515a01:1",
+          "description": "warning",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ],
+          "value-list": [
+            {
+              "value": 0,
+              "description": "Close"
+            },
+            {
+              "value": 1,
+              "description": "Open"
+            }
+          ]
+        },
+        {
+          "iid": 12,
+          "type": "urn:chuangmi-spec:property:device-location:0000000c:chuangmi-515a01:1",
+          "description": "device-location",
+          "format": "string",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ]
+        },
+        {
+          "iid": 13,
+          "type": "urn:chuangmi-spec:property:auto-upgrade:0000000d:chuangmi-515a01:1",
+          "description": "auto-upgrade",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ],
+          "value-list": [
+            {
+              "value": 0,
+              "description": "Close"
+            },
+            {
+              "value": 1,
+              "description": "Open"
+            }
+          ]
+        },
+        {
+          "iid": 14,
+          "type": "urn:chuangmi-spec:property:door-status:0000000e:chuangmi-515a01:1",
+          "description": "door-status",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ],
+          "value-list": [
+            {
+              "value": 0,
+              "description": "Close"
+            },
+            {
+              "value": 1,
+              "description": "Open"
+            }
+          ]
+        },
+        {
+          "iid": 15,
+          "type": "urn:chuangmi-spec:property:ble-wifi-mac:0000000f:chuangmi-515a01:1",
+          "description": "ble-wifi-mac",
+          "format": "string",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ]
+        },
+        {
+          "iid": 16,
+          "type": "urn:chuangmi-spec:property:wifi-connect:00000010:chuangmi-515a01:1",
+          "description": "wifi-connect",
+          "format": "bool",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ]
+        },
+        {
+          "iid": 17,
+          "type": "urn:chuangmi-spec:property:sync-settings:00000011:chuangmi-515a01:1",
+          "description": "sync-settings",
+          "format": "bool",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ]
+        },
+        {
+          "iid": 18,
+          "type": "urn:chuangmi-spec:property:quick-replay:00000012:chuangmi-515a01:1",
+          "description": "quick-replay",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ],
+          "value-range": [
+            1,
+            10,
+            1
+          ]
+        },
+        {
+          "iid": 19,
+          "type": "urn:chuangmi-spec:property:warning-unread:00000013:chuangmi-515a01:1",
+          "description": "warning-unread",
+          "format": "uint32",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ],
+          "value-range": [
+            0,
+            1000,
+            1
+          ]
+        },
+        {
+          "iid": 20,
+          "type": "urn:chuangmi-spec:property:ota-progress:00000014:chuangmi-515a01:1",
+          "description": "ota-progress",
+          "format": "int8",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ],
+          "value-range": [
+            -100,
+            100,
+            1
+          ]
+        },
+        {
+          "iid": 21,
+          "type": "urn:chuangmi-spec:property:sync-settings-new:00000015:chuangmi-515a01:2",
+          "description": "sync-settings-new",
+          "format": "uint8",
+          "access": [
+            "write"
+          ],
+          "value-list": [
+            {
+              "value": 1,
+              "description": "Password"
+            },
+            {
+              "value": 2,
+              "description": "Fingerprint"
+            },
+            {
+              "value": 3,
+              "description": "NFC"
+            },
+            {
+              "value": 4,
+              "description": "Face"
+            }
+          ]
+        },
+        {
+          "iid": 22,
+          "type": "urn:chuangmi-spec:property:inner-volume:00000016:chuangmi-515a01:3",
+          "description": "inner-volume",
+          "format": "int8",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ],
+          "value-range": [
+            0,
+            100,
+            1
+          ],
+          "gatt-access": []
+        },
+        {
+          "iid": 23,
+          "type": "urn:chuangmi-spec:property:outer-volume:00000017:chuangmi-515a01:4",
+          "description": "",
+          "format": "int8",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ],
+          "value-range": [
+            0,
+            100,
+            1
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "iid": 1,
+          "type": "urn:chuangmi-spec:action:video-record:00002801:chuangmi-515a01:2",
+          "description": "video-record",
+          "in": [],
+          "out": []
+        }
+      ],
+      "events": [
+        {
+          "iid": 1,
+          "type": "urn:chuangmi-spec:event:doorbell-press:00005001:chuangmi-515a01:1",
+          "description": "doorbell-press",
+          "arguments": []
+        },
+        {
+          "iid": 2,
+          "type": "urn:chuangmi-spec:event:someone-stays:00005002:chuangmi-515a01:2",
+          "description": "someone-stays",
+          "arguments": []
+        }
+      ]
+    }
+  ]
+}

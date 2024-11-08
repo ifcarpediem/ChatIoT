@@ -1,0 +1,304 @@
+{
+  "type": "urn:miot-spec-v2:device:thermostat:0000A031:cubee-th123e:1",
+  "description": "Thermostat",
+  "services": [
+    {
+      "iid": 1,
+      "type": "urn:miot-spec-v2:service:device-information:00007801:cubee-th123e:1",
+      "description": "Device Information",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:manufacturer:00000001:cubee-th123e:1",
+          "description": "Device Manufacturer",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:property:model:00000002:cubee-th123e:1",
+          "description": "Device Model",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:miot-spec-v2:property:serial-number:00000003:cubee-th123e:1",
+          "description": "Device Serial Number",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 4,
+          "type": "urn:miot-spec-v2:property:firmware-revision:00000005:cubee-th123e:1",
+          "description": "Current Firmware Version",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        }
+      ]
+    },
+    {
+      "iid": 2,
+      "type": "urn:miot-spec-v2:service:thermostat:0000784A:cubee-th123e:1",
+      "description": "Thermostat",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:on:00000006:cubee-th123e:1",
+          "description": "Switch Status",
+          "format": "bool",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:property:status:00000007:cubee-th123e:1",
+          "description": "Status",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "value-list": [
+            {
+              "value": 0,
+              "description": "未加热状态"
+            },
+            {
+              "value": 1,
+              "description": "加热中"
+            }
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:miot-spec-v2:property:fault:00000009:cubee-th123e:1",
+          "description": "Device Fault",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "value-list": [
+            {
+              "value": 1,
+              "description": "传感器错误"
+            },
+            {
+              "value": 0,
+              "description": "无错误"
+            },
+            {
+              "value": 2,
+              "description": "高温保护"
+            },
+            {
+              "value": 3,
+              "description": "低温保护"
+            }
+          ]
+        },
+        {
+          "iid": 4,
+          "type": "urn:miot-spec-v2:property:mode:00000008:cubee-th123e:1",
+          "description": "Mode",
+          "format": "uint8",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ],
+          "unit": "none",
+          "value-list": [
+            {
+              "value": 0,
+              "description": "Manual"
+            },
+            {
+              "value": 1,
+              "description": "Home"
+            },
+            {
+              "value": 2,
+              "description": "Away"
+            },
+            {
+              "value": 3,
+              "description": "Smart"
+            },
+            {
+              "value": 4,
+              "description": "Sleep"
+            }
+          ]
+        },
+        {
+          "iid": 5,
+          "type": "urn:miot-spec-v2:property:target-temperature:00000021:cubee-th123e:1",
+          "description": "Target Temperature",
+          "format": "float",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ],
+          "unit": "celsius",
+          "value-range": [
+            0,
+            90,
+            1
+          ]
+        },
+        {
+          "iid": 7,
+          "type": "urn:miot-spec-v2:property:temperature:00000020:cubee-th123e:1",
+          "description": "Temperature",
+          "format": "float",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "unit": "celsius",
+          "value-range": [
+            -30,
+            100,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "iid": 4,
+      "type": "urn:cubee-spec:service:heatold:00007801:cubee-th123e:1",
+      "description": "",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:cubee-spec:property:childlock:00000001:cubee-th123e:1",
+          "description": "",
+          "format": "bool",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:cubee-spec:property:sensortype:00000002:cubee-th123e:1",
+          "description": "",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ],
+          "value-list": [
+            {
+              "value": 0,
+              "description": "内置传感器"
+            },
+            {
+              "value": 1,
+              "description": "外置传感器"
+            },
+            {
+              "value": 2,
+              "description": "内外置传感器"
+            }
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:cubee-spec:property:tempactivate:00000003:cubee-th123e:1",
+          "description": "",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ],
+          "value-range": [
+            1,
+            9,
+            1
+          ]
+        },
+        {
+          "iid": 4,
+          "type": "urn:cubee-spec:property:tempcomp:00000004:cubee-th123e:1",
+          "description": "",
+          "format": "int8",
+          "access": [
+            "read",
+            "notify",
+            "write"
+          ],
+          "value-range": [
+            -9,
+            9,
+            1
+          ]
+        },
+        {
+          "iid": 5,
+          "type": "urn:cubee-spec:property:tempfloor:00000005:cubee-th123e:1",
+          "description": "",
+          "format": "int8",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "value-range": [
+            0,
+            100,
+            1
+          ]
+        },
+        {
+          "iid": 6,
+          "type": "urn:cubee-spec:property:maxsettemp:00000006:cubee-th123e:1",
+          "description": "",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "unit": "celsius",
+          "value-range": [
+            35,
+            90,
+            1
+          ]
+        },
+        {
+          "iid": 7,
+          "type": "urn:cubee-spec:property:minsettemp:00000007:cubee-th123e:1",
+          "description": "",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "unit": "celsius",
+          "value-range": [
+            0,
+            30,
+            1
+          ]
+        }
+      ]
+    }
+  ]
+}

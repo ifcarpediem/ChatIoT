@@ -1,0 +1,294 @@
+{
+  "type": "urn:miot-spec-v2:device:air-conditioner:0000A004:zhimi-ma1:1",
+  "description": "Air Conditioner",
+  "services": [
+    {
+      "iid": 1,
+      "type": "urn:miot-spec-v2:service:device-information:00007801:zhimi-ma1:1",
+      "description": "Device Information",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:manufacturer:00000001:zhimi-a1:1",
+          "description": "Device Manufacturer",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:property:model:00000002:zhimi-ma1:1",
+          "description": "Device Model",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:miot-spec-v2:property:serial-number:00000003:zhimi-ma1:1",
+          "description": "Device Serial Number",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 4,
+          "type": "urn:miot-spec-v2:property:name:00000004:zhimi-ma1:1",
+          "description": "Device Name",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 5,
+          "type": "urn:miot-spec-v2:property:firmware-revision:00000005:zhimi-ma1:1",
+          "description": "Current Firmware Version",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        }
+      ]
+    },
+    {
+      "iid": 2,
+      "type": "urn:miot-spec-v2:service:air-conditioner:0000780F:zhimi-ma1:1",
+      "description": "Air Conditioner",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:on:00000006:zhimi-ma1:1",
+          "description": "Switch Status",
+          "format": "bool",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:property:mode:00000008:zhimi-ma1:1",
+          "description": "Mode",
+          "format": "uint8",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ],
+          "value-list": [
+            {
+              "value": 0,
+              "description": "Auto"
+            },
+            {
+              "value": 1,
+              "description": "Cool"
+            },
+            {
+              "value": 2,
+              "description": "Dry"
+            },
+            {
+              "value": 3,
+              "description": "Heat"
+            },
+            {
+              "value": 4,
+              "description": "Fan"
+            }
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:miot-spec-v2:property:target-temperature:00000021:zhimi-ma1:1",
+          "description": "Target Temperature",
+          "format": "float",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ],
+          "unit": "celsius",
+          "value-range": [
+            16,
+            32,
+            0.1
+          ]
+        },
+        {
+          "iid": 4,
+          "type": "urn:miot-spec-v2:property:heater:00000026:zhimi-ma2:1",
+          "description": "Heater",
+          "format": "bool",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ]
+        },
+        {
+          "iid": 5,
+          "type": "urn:miot-spec-v2:property:sleep-mode:00000028:zhimi-ma1:1",
+          "description": "Sleep Mode",
+          "format": "bool",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ]
+        }
+      ]
+    },
+    {
+      "iid": 3,
+      "type": "urn:miot-spec-v2:service:fan-control:00007809:zhimi-ma1:1",
+      "description": "Fan Control",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:fan-level:00000016:zhimi-ma1:1",
+          "description": "Fan Level",
+          "format": "uint8",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ],
+          "value-list": [
+            {
+              "value": 0,
+              "description": "Auto"
+            },
+            {
+              "value": 1,
+              "description": "Level1"
+            },
+            {
+              "value": 2,
+              "description": "Level2"
+            },
+            {
+              "value": 3,
+              "description": "Level3"
+            },
+            {
+              "value": 4,
+              "description": "Level4"
+            },
+            {
+              "value": 5,
+              "description": "Level5"
+            }
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:property:vertical-swing:00000018:zhimi-ma1:1",
+          "description": "Vertical Swing",
+          "format": "bool",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:miot-spec-v2:property:vertical-angle:0000001A:zhimi-ma1:1",
+          "description": "Vertical Angle",
+          "format": "uint8",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ],
+          "value-range": [
+            0,
+            60,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "iid": 4,
+      "type": "urn:miot-spec-v2:service:environment:0000780A:zhimi-ma1:1",
+      "description": "Environment",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:temperature:00000020:zhimi-ma1:1",
+          "description": "Indoor Temperature",
+          "format": "float",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "unit": "celsius",
+          "value-range": [
+            -40,
+            125,
+            0.1
+          ]
+        }
+      ]
+    },
+    {
+      "iid": 5,
+      "type": "urn:miot-spec-v2:service:alarm:00007804:zhimi-ma1:1",
+      "description": "Alarm",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:alarm:00000012:zhimi-ma1:1",
+          "description": "Alarm",
+          "format": "bool",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ]
+        }
+      ]
+    },
+    {
+      "iid": 6,
+      "type": "urn:miot-spec-v2:service:indicator-light:00007803:zhimi-ma1:1",
+      "description": "Indicator Light",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:on:00000006:zhimi-ma1:1",
+          "description": "Switch Status",
+          "format": "bool",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:property:brightness:0000000D:zhimi-ma1:1",
+          "description": "Brightness",
+          "format": "uint8",
+          "access": [
+            "read",
+            "write",
+            "notify"
+          ],
+          "value-range": [
+            0,
+            7,
+            1
+          ]
+        }
+      ]
+    }
+  ]
+}

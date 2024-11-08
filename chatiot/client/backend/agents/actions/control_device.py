@@ -37,8 +37,7 @@ ASSISTANT:
     "Say_to_user": "Ok, I have done it for you."
 }'''
 
-USER_MESSAGE = '''
-user_request: {user_request}
+USER_MESSAGE = '''user_request: {user_request}
 device_list: {device_list}'''
 
 

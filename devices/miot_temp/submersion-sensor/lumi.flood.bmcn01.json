@@ -1,0 +1,89 @@
+{
+  "type": "urn:miot-spec-v2:device:submersion-sensor:0000A024:lumi-bmcn01:2",
+  "description": "Submersion Sensor",
+  "services": [
+    {
+      "iid": 1,
+      "type": "urn:miot-spec-v2:service:device-information:00007801:lumi-bmcn01:1",
+      "description": "Device Information",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:manufacturer:00000001:lumi-bmcn01:1",
+          "description": "Device Manufacturer",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 2,
+          "type": "urn:miot-spec-v2:property:model:00000002:lumi-bmcn01:1",
+          "description": "Device Model",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 3,
+          "type": "urn:miot-spec-v2:property:serial-number:00000003:lumi-bmcn01:1",
+          "description": "Device ID",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        },
+        {
+          "iid": 4,
+          "type": "urn:miot-spec-v2:property:firmware-revision:00000005:lumi-bmcn01:1",
+          "description": "Current Firmware Version",
+          "format": "string",
+          "access": [
+            "read"
+          ]
+        }
+      ]
+    },
+    {
+      "iid": 2,
+      "type": "urn:miot-spec-v2:service:submersion-sensor:00007839:lumi-bmcn01:1",
+      "description": "Submersion Sensor",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:submersion-state:0000007E:lumi-bmcn01:1",
+          "description": "Submersion State",
+          "format": "bool",
+          "access": [
+            "read",
+            "notify"
+          ]
+        }
+      ]
+    },
+    {
+      "iid": 3,
+      "type": "urn:miot-spec-v2:service:battery:00007805:lumi-bmcn01:1",
+      "description": "Battery",
+      "properties": [
+        {
+          "iid": 1,
+          "type": "urn:miot-spec-v2:property:battery-level:00000014:lumi-bmcn01:1",
+          "description": "Battery Level",
+          "format": "uint8",
+          "access": [
+            "read",
+            "notify"
+          ],
+          "unit": "percentage",
+          "value-range": [
+            0,
+            100,
+            1
+          ]
+        }
+      ]
+    }
+  ]
+}
