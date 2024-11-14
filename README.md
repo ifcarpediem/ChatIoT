@@ -14,7 +14,7 @@ You will need to install [Home Assistant](https://www.home-assistant.io/installa
 # Get Started
 
 ## Installation
-> Ensure that Python 3.9+ is installed on your system. You can check this by using: `python --version`.
+> Ensure that Python 3.10+ is installed on your system. You can check this by using: `python --version`.
 
 ### Download ChatIoT
 Download ChatIoT and ensure that ChatIoT is running on the same device as Home Assistant.
