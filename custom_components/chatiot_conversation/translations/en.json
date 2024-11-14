@@ -1,0 +1,20 @@
+{
+    "config": {
+        "error": {
+            "failed_to_connect": "Failed to connect to the remote API: {exception}"
+        },
+        "step": {
+            "config_provider": {
+                "data": {
+                    "provider": "select model",
+                    "api_key": "API Key",
+                    "base_url": "Base URL",
+                    "temperature": "Temperature",
+                    "max_tokens": "Max Tokens"
+                },
+                "description": "Provide the connection details to connect to the LLM API.\n\n**Models supported out of the box:**\n1. gpt-3.5-turbo-0125\n2. gpt-4-turbo\n3. gpt-4o\n4. deepseek-chat\n5. moonshot-v1-8k",
+                "title": "Configure connection to LLM API"
+            }
+        }
+    }
+}

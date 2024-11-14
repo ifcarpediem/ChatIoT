@@ -1,0 +1,15 @@
+{
+  "domain": "chatiot_conversation",
+  "name": "ChatIoT Conversation",
+  "version": "2024.11.11",
+  "codeowners": ["@ifcarpediem"],
+  "config_flow": true,
+  "dependencies": ["conversation"],
+  "after_dependencies": ["assist_pipeline"],
+  "integration_type": "service",
+  "iot_class": "local_polling",
+  "requirements": [
+    "loguru==0.7.2",
+    "openai==1.42.0"
+  ]
+}

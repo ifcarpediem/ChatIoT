@@ -51,7 +51,7 @@ class OpenAILLM():
 if __name__ == '__main__':
     import yaml
     config = yaml.safe_load(open('./configs/default_config.yaml'))
-    llm = OpenAILLM('gpt-4o', config)
+    llm = OpenAILLM('gpt-4-turbo', config)
     messages = [
         {"role": "system", "content": "You are a helpful assistant."},
         {"role": "user", "content": "What is capital of France?"},
