@@ -8,6 +8,10 @@ This repository is dedicated to the smart home domain, utilizing the Home Assist
 <a href=""><img src="docs\resources\ChatIoT_usage_overview.png" width="500px"></a>
 </p>
 
+# Path 1: Install ChatIoT in Home Assistant [Recommended] 
+Please see the [Setup Guide](./custom_components/Setup.md) for more information on installation.
+
+# Path 2: Deploy ChatIoT locally
 # Pre-requisites
 You will need to install [Home Assistant](https://www.home-assistant.io/installation/) and integrate your devices with it. This project currently mainly supports devices that use the MIoT protocol, which can be connected through [Xiaomi Miot Auto](https://github.com/al-one/hass-xiaomi-miot). Please ensure that the device names and areas are correctly configured. Additionally, please mount the Home Assistant configuration file to a local directory (as future configurations will be required).
 
