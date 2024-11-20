@@ -1,6 +1,5 @@
 {
-    "name": "ChatIoT Conversation",    
-    "homeassistant": "2024.10.0",
-    "content_in_root": false,
-    "render_readme": true
+    "name": "ChatIoT",    
+    "homeassistant": "2024.8.0",
+    "content_in_root": false
 }

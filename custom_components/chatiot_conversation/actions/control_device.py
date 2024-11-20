@@ -78,8 +78,8 @@ class ControlDevice(Action):
         if rsp_json["Action_type"] == "Finish":
             self.llm.reset()
             commands = rsp_json["Commands"]
-            # say_to_user = rsp_json["Say_to_user"]
-            say_to_user = rsp_json["Say_to_user"] + "\n" + str(commands)
+            say_to_user = rsp_json["Say_to_user"]
+            # say_to_user = rsp_json["Say_to_user"] + "\n" + str(commands)
             TRANSLATOR = Translator()
             for command in commands:
                 await TRANSLATOR.run_single_command(command)

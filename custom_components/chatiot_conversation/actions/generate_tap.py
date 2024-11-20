@@ -83,8 +83,8 @@ class GenerateTAP(Action):
         if rsp_json["Action_type"] == "Finish":
             self.llm.reset()
             tap = rsp_json["TAP"]
-            # say_to_user = rsp_json["Say_to_user"]
-            say_to_user = rsp_json["Say_to_user"] + "\n" + str(tap)
+            say_to_user = rsp_json["Say_to_user"]
+            # say_to_user = rsp_json["Say_to_user"] + "\n" + str(tap)
             TRANSLATOR = Translator()
             await TRANSLATOR.deploy_tap(self.user_request, tap)
             self.user_request = None
