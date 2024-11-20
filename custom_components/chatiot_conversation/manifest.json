@@ -3,7 +3,7 @@
   "name": "ChatIoT",
   "version": "2024.11.11",
   "codeowners": ["@ifcarpediem"],
-  "documentation": "https://github.com/ifcarpediem/ChatIoT/tree/main/custom_components/chatiot_conversation",
+  "documentation": "https://github.com/ifcarpediem/ChatIoT/tree/main/custom_components",
   "config_flow": true,
   "dependencies": ["conversation"],
   "after_dependencies": ["assist_pipeline"],
