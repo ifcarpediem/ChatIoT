@@ -1,8 +1,9 @@
-from ..utils.singleton import Singleton
+from utils.singleton import Singleton
 
-class Config(metaclass=Singleton):
+class Configs(metaclass=Singleton):
     def __init__(self):
-        self.configs = {}
+        self.hass_data = {}
+        self.configs_llm = {}
     
     def _get(self, *args, **kwargs):
         return self._configs.get(*args, **kwargs)
@@ -13,4 +14,4 @@ class Config(metaclass=Singleton):
             raise ValueError(f"Key '{key}' not found in the YAML file")
         return value
 
-CONFIG = Config()
+CONFIG = Configs()

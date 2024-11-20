@@ -1,6 +1,6 @@
 {
   "domain": "chatiot_conversation",
-  "name": "ChatIoT Conversation",
+  "name": "ChatIoT",
   "version": "2024.11.11",
   "codeowners": ["@ifcarpediem"],
   "config_flow": true,

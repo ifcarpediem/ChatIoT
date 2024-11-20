@@ -2,11 +2,9 @@
 from __future__ import annotations
 
 from .utils.logs import _logger
-
 _logger.debug(f"Start conversation.py")
 
 from typing import Literal
-
 from homeassistant.components.conversation import ConversationInput, ConversationResult, AbstractConversationAgent, ConversationEntity
 from homeassistant.components import assist_pipeline, conversation as ha_conversation
 from homeassistant.components.conversation.const import DOMAIN as CONVERSATION_DOMAIN
@@ -16,23 +14,24 @@ from homeassistant.const import MATCH_ALL
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers import config_validation as cv, intent, entity_registry as er, area_registry as ar, device_registry as dr
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
+from homeassistant.util import ulid
 
 from .const import (
     DOMAIN,
     CONF_PROVIDER,
-    CONF_API_KEY,
-    CONF_BASE_URL,
-    CONF_TEMPERATURE,
-    CONF_MAX_TOKENS,
     PROVIDERS,
     DEFAULT_PROVIDER,
-    DEFAULT_API_KEY,
-    DEFAULT_BASE_URL,
-    DEFAULT_TEMPERATURE,
-    DEFAULT_MAX_TOKENS
+    WORK_PATH
 )
 
-from .chatiot.config_chatiot import CONFIG
+import sys
+sys.path.append(WORK_PATH)
+
+import requests
+from configs import CONFIG
+from context_assistant import download_instance, get_miot_info, get_miot_devices, get_all_states, get_all_context
+from utils.utils import delete_all_files_in_folder
+
 
 _logger.debug(f"conversation.py: module import completed")
 
@@ -80,6 +79,8 @@ class LocalLLMAgent(ConversationEntity, AbstractConversationAgent):
         self.hass = hass
         self.entry_id = entry.entry_id
         self.history = {}
+
+        _logger.debug("start conversation")
 
     async def async_added_to_hass(self) -> None:
         """When entity is added to Home Assistant."""
@@ -135,19 +136,24 @@ class LocalLLMAgent(ConversationEntity, AbstractConversationAgent):
         _logger.debug(f"Processing conversation: {user_input.text}")
         """Process a sentence."""
 
-        # if user_input.conversation_id in self.history:
-        #     conversation_id = user_input.conversation_id
-        #     conversation = self.history[conversation_id]
-        conversation_id = user_input.conversation_id
+        if user_input.conversation_id:
+            conversation_id = user_input.conversation_id
+        else:
+            conversation_id = ulid.ulid()
+        conversation = []
+
+        _logger.debug(f"user_input: {user_input}")
+
         conversation = []
 
         conversation.append({"role": "user", "message": user_input.text})
             
         # generate a response
         try:
-            _logger.debug(conversation)
-            response = await self._async_generate(conversation)
-            _logger.debug(response)
+            _logger.debug(f"conversation_id: {conversation_id}")
+            _logger.debug(f"conversation: {conversation}")
+            response = await self._async_generate(conversation_id, conversation)
+            _logger.debug(f"response: {response}")
 
         except Exception as err:
             _logger.error("There was a problem talking to the backend")
@@ -163,7 +169,10 @@ class LocalLLMAgent(ConversationEntity, AbstractConversationAgent):
         
         conversation.append({"role": "assistant", "message": response})
 
-        self.history[conversation_id] = conversation
+        if conversation_id not in self.history:
+            self.history[conversation_id] = conversation
+        else:
+            self.history[conversation_id].extend(conversation)
         
         intent_response = intent.IntentResponse(language=user_input.language)
         intent_response.async_set_speech(response.strip())
@@ -174,82 +183,118 @@ class LocalLLMAgent(ConversationEntity, AbstractConversationAgent):
 
     def _async_get_exposed_entities(self) -> tuple[dict[str, str], list[str]]:
         """Gather exposed entity states"""
-        entity_states = {}
-        domains = set()
-        entity_registry = er.async_get(self.hass)
-        device_registry = dr.async_get(self.hass)
-        area_registry = ar.async_get(self.hass)
+        # TODO consider the privacy of the user
+        # Now ChatIoT can access all entities
+        pass
+        
+    async def _reload_all(self):
+        await self.hass.services.async_call("homeassistant", "reload_all")
+        # access_token = CONFIG.hass_data["access_token"]
+        # headers = {
+        #     "Authorization": f"Bearer {access_token}",
+        #     "Content-Type": "application/json"
+        # }
+        # url = "http://127.0.0.1:8123/api/services/homeassistant/reload_all"
+        # try:
+        #     def test():
+        #         nonlocal url, headers
+        #         response = requests.post(url=url, headers=headers)
+        #         _logger.debug(f"response: {response}")
+        #         return "reload all"
+        #     response = await self.hass.async_add_executor_job(test)
+        #     return response
+        # except Exception as ex:
+        #     _logger.error(f"Connection error was: {repr(ex)}")
+        #     return "failed_to_connect"
 
-        for state in self.hass.states.async_all():
-            if not async_should_expose(self.hass, CONVERSATION_DOMAIN, state.entity_id):
-                continue
+    
+    async def _check_config(self):
+        # import time, asyncio
+        # log_file_path = "/config/home-assistant.log"
+        # error_tag = str(time.strftime('%Y-%m-%d %H:%M:%S'))
+        # await self.hass.services.async_call("homeassistant", "check_config")
+        # await asyncio.sleep(1)
+        # _logger.debug(f"error_tag: {error_tag}")
+        # with open(log_file_path, 'r') as f:
+        #     lines = f.readlines()
+        #     for line in lines[-20:]:
+        #         _logger.debug(f"line: {line}")
+        #         if error_tag in line and "ERROR" in line:
+        #             return False
+        # return True
+        access_token = CONFIG.hass_data["access_token"]
+        url = f"http://127.0.0.1:8123/api/config/core/check_config"
+        headers = {
+            "Authorization": f"Bearer {access_token}",
+            "Content-Type": "application/json"
+        }
+        try:
+            def test():
+                nonlocal url, headers
+                response = requests.post(url=url, headers=headers)
+                _logger.debug(f"response: {response}")
+                if response.status_code == 200:
+                    return response.json()["result"]
+                else:
+                    return f"failed_to_connect: {response.status_code}"
+            response = await self.hass.async_add_executor_job(test)
+            return response
+        except Exception as ex:
+            _logger.error(f"Connection error was: {repr(ex)}")
+            return "failed_to_connect"
 
-            entity = entity_registry.async_get(state.entity_id)
-            device = None
-            if entity and entity.device_id:
-                device = device_registry.async_get(entity.device_id)
-
-            attributes = dict(state.attributes)
-            attributes["state"] = state.state
-
-            if entity:
-                if entity.aliases:
-                    attributes["aliases"] = entity.aliases
-                    
-                if entity.unit_of_measurement:
-                    attributes["state"] = attributes["state"] + " " + entity.unit_of_measurement
-
-            # area could be on device or entity. prefer device area
-            area_id = None
-            if device and device.area_id:
-                area_id = device.area_id
-            if entity and entity.area_id:
-                area_id = entity.area_id
-            
-            if area_id:
-                area = area_registry.async_get_area(entity.area_id)
-                if area:
-                    attributes["area_id"] = area.id
-                    attributes["area_name"] = area.name
-            
-            entity_states[state.entity_id] = attributes
-            domains.add(state.domain)
-
-        return entity_states, list(domains)
-
+    async def _get_states(self):
+        access_token = CONFIG.hass_data["access_token"]
+        headers = {
+            "Authorization": f"Bearer {access_token}",
+            "Content-Type": "application/json"
+        }
+        url = "http://127.0.0.1:8123/api/states"
+        try:
+            def test():
+                nonlocal url, headers
+                response = requests.get(url=url, headers=headers)
+                _logger.debug(f"response: {response}")
+                return "success"
+            response = await self.hass.async_add_executor_job(test)
+            return response
+        except Exception as ex:
+            _logger.error(f"Connection error was: {repr(ex)}")
+            return "failed_to_connect"
 
 class GenericOpenAIAPIAgent(LocalLLMAgent):
     """Generic OpenAI API conversation agent."""
-    provider: str
-    api_key: str
-    base_url: str
-    temperature: float
-    max_tokens: int
 
     async def _async_load_model(self, entry: ConfigEntry) -> None:
-        self.provider = self.entry.data.get(CONF_PROVIDER, DEFAULT_PROVIDER)
-        self.api_key = self.entry.data.get(CONF_API_KEY, DEFAULT_API_KEY)
-        self.base_url = self.entry.data.get(CONF_BASE_URL, DEFAULT_BASE_URL)
-        self.temperature = self.entry.data.get(CONF_TEMPERATURE, DEFAULT_TEMPERATURE)
-        self.max_tokens = self.entry.data.get(CONF_MAX_TOKENS, DEFAULT_MAX_TOKENS)
-        CONFIG.configs["provider"] = self.provider
-        CONFIG.configs["api_key"] = self.api_key
-        CONFIG.configs["base_url"] = self.base_url
-        CONFIG.configs["temperature"] = self.temperature
-        CONFIG.configs["max_tokens"] = self.max_tokens
-    
-    async def _async_generate(self, conversation: dict) -> str:
-        from .chatiot.jarvis import test_1
-        if conversation[0]["message"] == "hello":
-            return "Hello, how can I help you today?"
-        elif conversation[0]["message"] == "你好":
-            return "你好，我是你的智能家居助手Jarvis，有什么可以帮到您的吗？"
-        else:
-            try:
-                return await test_1(conversation[0]["message"])
-            except:
-                return "Sorry, The server is not available now. Please wait the server to be online."
+        CONFIG.configs_llm["provider"] = entry.data[CONF_PROVIDER]
+        CONFIG.configs_llm["api_key"] = entry.data["api_key"]
+        CONFIG.configs_llm["base_url"] = entry.data["base_url"]
+        CONFIG.configs_llm["temperature"] = entry.data["temperature"]
+        CONFIG.configs_llm["max_tokens"] = entry.data["max_tokens"]
+        CONFIG.hass_data["access_token"] = entry.data["access_token"]
+        _logger.debug(f"configs_llm: {CONFIG.configs_llm}")
+        _logger.debug(f"hass_data: {CONFIG.hass_data}")
 
+        await self.hass.async_add_executor_job(delete_all_files_in_folder, "/config/.storage/chatiot_conversation/temp")
+        await self.hass.async_add_executor_job(get_miot_devices)
+        await self.hass.async_add_executor_job(download_instance)
+        await self.hass.async_add_executor_job(get_miot_info)
+        await get_all_states()
+        await self.hass.async_add_executor_job(get_all_context)
+
+        from jarvis import JARVIS
+        self.jarvis = JARVIS
+        from translator import Translator
+        self.translator = Translator(self.hass)
+    
+    async def _async_generate(self, conversation_id: str, conversation: list[dict]) -> str:
+        try:
+            result = await self.jarvis.run(conversation[-1]["message"])
+            _logger.debug(f"result: {result}")
+            return result
+        except Exception as err:
+            _logger.error(f"Error generating response: {err}")
+            return f"Error generating response: {err}"
         
 
     
