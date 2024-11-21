@@ -9,6 +9,9 @@ This repository is dedicated to the smart home domain, utilizing the Home Assist
 </p>
 
 # 1 Install ChatIoT in Home Assistant [Recommended] 
+
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?category=Integration&repository=ChatIoT&owner=ifcarpediem)
+
 Please see the [Setup Guide](./custom_components/Setup.md) for more information on installation.
 
 # 2 Deploy ChatIoT locally
