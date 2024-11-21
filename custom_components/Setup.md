@@ -12,7 +12,7 @@ This project a component to control your Home Assistant as a personal assistant.
 The following link will open your Home Assistant installation and download the integration:
 Remember to restart Home Assistant after install the component!
 
-[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?category=Integration&repository=home-llm&owner=acon96)
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?category=Integration&repository=ChatIoT&owner=ifcarpediem)
 
 # Usage
 After the user completes the configuration in the voice assistant, he can choose to talk to ChatIoT in the dialogue window. ChatIoT can help users control devices and create automation.
