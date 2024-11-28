@@ -1,5 +1,6 @@
-ChatIoT: Zero-code Generation of Trigger-action Based IoT Programs
-===
+# :house: ChatIoT
+
+## :pencil: Introduction
 The mission of ChatIoT is to empower users to create TAP (Trigger-action Program) through natural language interactions. 
 
 This repository is dedicated to the smart home domain, utilizing the Home Assistant open-source platform as its core infrastructure. Once ChatIoT is deployed, users can effortlessly control smart home devices using natural language (e.g., 'Turn on the lights') or create TAP rules to automate tasks (e.g., 'If someone passes through the living room, automatically turn on the living room lights').
@@ -8,7 +9,12 @@ This repository is dedicated to the smart home domain, utilizing the Home Assist
 <a href=""><img src="docs\resources\ChatIoT_usage_overview.png" width="500px"></a>
 </p>
 
-# 1 Install ChatIoT in Home Assistant [Recommended] 
+## :hammer_and_wrench: Get Started
+There are two methods to install ChatIoT.
+
+### :whale: Home Assistant Integration
+
+### :computer: Deploy Locally()
 
 [![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?category=Integration&repository=ChatIoT&owner=ifcarpediem)
 
@@ -94,7 +100,7 @@ python client.py
 <!-- ## Screenshots -->
 <!-- # Todos -->
 
-# Citation
+## 🖋️ Research
 To cite [ChatIoT](https://maestro.acm.org/trk/clickp?ref=z16l2snue3_2-310b8_0x33ae25x01410&doi=3678585) in publications, please use the following BibTeX entries.
 
 ```bibtex
