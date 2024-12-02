@@ -20,21 +20,19 @@ Please see the [Setup Guide](./custom_components/Setup.md) for more information 
 
 ### :computer: Deploy Locally()
 
-## Pre-requisites
+#### Pre-requisites
 You will need to install [Home Assistant](https://www.home-assistant.io/installation/) and integrate your devices with it. This project currently mainly supports devices that use the MIoT protocol, which can be connected through [Xiaomi Miot Auto](https://github.com/al-one/hass-xiaomi-miot). Please ensure that the device names and areas are correctly configured. Additionally, please mount the Home Assistant configuration file to a local directory (as future configurations will be required).
 
-## Get Started
-
-### Installation
+#### Installation
 > Ensure that Python 3.10+ is installed on your system. You can check this by using: `python --version`.
 
-#### Download ChatIoT
+##### Download ChatIoT
 Download ChatIoT and ensure that ChatIoT is running on the same device as Home Assistant.
 ```bash
 git clone https://github.com/ifcarpediem/ChatIoT.git
 ```
 
-#### Start Server
+##### Start Server
 The current server only provides the FastAPI service for Large Language Models (LLMs), with other content updates to follow in the future.
 
 The server-side configuration file is `chatiot/server/configs/config.yaml`, and some parameters are presented as follows:
@@ -52,7 +50,7 @@ pip install -r requirements.txt
 python client.py
 ```
 
-#### Start Client
+##### Start Client
 The current client is responsible for interacting with the user as well as Home Assistant. Currently, it mainly provides two modes of interaction:
 
 + Text interaction: You can enter requests on the web page.
