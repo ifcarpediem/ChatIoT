@@ -14,13 +14,12 @@ There are two methods to install ChatIoT.
 
 ### :whale: Home Assistant Integration
 
-### :computer: Deploy Locally()
-
 [![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?category=Integration&repository=ChatIoT&owner=ifcarpediem)
 
 Please see the [Setup Guide](./custom_components/Setup.md) for more information on installation.
 
-# 2 Deploy ChatIoT locally
+### :computer: Deploy Locally()
+
 ## Pre-requisites
 You will need to install [Home Assistant](https://www.home-assistant.io/installation/) and integrate your devices with it. This project currently mainly supports devices that use the MIoT protocol, which can be connected through [Xiaomi Miot Auto](https://github.com/al-one/hass-xiaomi-miot). Please ensure that the device names and areas are correctly configured. Additionally, please mount the Home Assistant configuration file to a local directory (as future configurations will be required).
 
