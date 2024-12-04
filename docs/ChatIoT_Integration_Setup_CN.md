@@ -6,7 +6,7 @@
 </div>
 
 ## 下载ChatIoT集成
-点击下方图案链接，填入Home Assistant的网址和端口（默认本机8123端口的话：https://localhost:8124），跳转到HACS商店，点击“ADD”选项加载ChatIoT页面，然后点击右下角的“DOWNLOAD”按钮下载ChatIoT，重启Home Assistant。
+点击下方图案链接，填入Home Assistant的网址和端口（默认本机8123端口），跳转到HACS商店，点击“ADD”选项加载ChatIoT页面，然后点击右下角的“DOWNLOAD”按钮下载ChatIoT，重启Home Assistant。
 
 [![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?category=Integration&repository=ChatIoT&owner=ifcarpediem)
 
