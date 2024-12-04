@@ -1,7 +1,7 @@
 <div align="center">
 
 <h1 align="center">🏠ChatIoT</h1>
-一个让你能够轻松创建智能家居的语音助手。
+一个让你能够轻松控制智能家居的语音助手。
 
 [English](./README.md) / 简体中文
 </div>
