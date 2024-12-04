@@ -1,7 +1,6 @@
 <div align="center">
 
 <h1 align="center">Home Assistant安装指南</h1>
-在本地安装和部署Home Assistant。
 
 [English](./Miot_Device_Setup.md) / 简体中文
 </div>
@@ -46,9 +45,11 @@ docker exec -it hass /bin/bash
 wget -q -O - https://get.hacs.xyz | bash -
 ```
 2、重启Home Assistant
+
 Home Assistant下载安装集成，都需要经过重启才能生效。你可以通过访问Home Assistant的界面，在左侧边栏上点击“开发者工具”，然后在页面上找到“配置检查与重启”，先点击“检查配置”，没有问题时再点击“重新启动”。
 
 3、配置HACS
+
 重启后再打开Home Assistant的用户界面，点击侧边栏“设置”，点击“设备与服务”，选择“集成”，点击右下角“添加集成”，搜索“HACS”进行安装。这其中需要通过Github账号绑定才能使用HACS商店，请根据指引操作，也可参考详细的[博客](https://blog.csdn.net/sunky7/article/details/137619019)指引进行安装。
 
 # 设备接入

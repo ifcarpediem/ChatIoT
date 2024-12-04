@@ -275,7 +275,10 @@ class GenericOpenAIAPIAgent(LocalLLMAgent):
         _logger.debug(f"configs_llm: {CONFIG.configs_llm}")
         _logger.debug(f"hass_data: {CONFIG.hass_data}")
 
-        await self.hass.async_add_executor_job(delete_all_files_in_folder, "/config/.storage/chatiot_conversation/temp")
+        import os
+        if os.path.exists("/config/.storage/chatiot_conversation/temp"):
+            await self.hass.async_add_executor_job(delete_all_files_in_folder, "/config/.storage/chatiot_conversation/temp")
+        # await self.hass.async_add_executor_job(delete_all_files_in_folder, "/config/.storage/chatiot_conversation/temp")
         await self.hass.async_add_executor_job(get_miot_devices)
         await self.hass.async_add_executor_job(download_instance)
         await self.hass.async_add_executor_job(get_miot_info)
