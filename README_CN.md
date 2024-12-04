@@ -1,7 +1,7 @@
 <div align="center">
 
 <h1 align="center">🏠ChatIoT</h1>
-一个让你能够轻松创建智能家居的语音助手。
+一个让你能够轻松控制智能家居的语音助手。
 
 [English](./README.md) / 简体中文
 </div>
@@ -24,9 +24,9 @@ ChatIoT主要的目的是让用户无需编写代码或者点击操作来与物�
 
 最后，你可以在HACS商店中安装Xiaomi Miot Auto集成，然后将你的设备从米家中接入到Home Assistant中。
 
-详细教程参考[Home Assistant安装指南](./docs/Home_Assistant_Setup.md)。
+详细教程参考[Home Assistant安装指南](./docs/Home_Assistant_Setup_CN.md)。
 
-**注意**：目前，ChatIoT仅支持通过Xiaomi Miot Auto集成接入的小米设备。如果你没有这类设备，或者你只是想体验ChatIoT，你可以使用设备模拟器来模拟设备，创建你的虚拟家庭环境。详细教程参考[Miot设备模拟指南](./docs/Miot_Device_Setup.md)。
+**注意**：目前，ChatIoT仅支持通过Xiaomi Miot Auto集成接入的小米设备。如果你没有这类设备，或者你只是想体验ChatIoT，你可以使用设备模拟器来模拟设备，创建你的虚拟家庭环境。详细教程参考[Miot设备模拟指南](./docs/Miot_Device_Setup_CN.md)。
 
 ### 2. 大模型API Key获取
 ChatIoT基于大型语言模型实现设备控制和创建规则。考虑到难以在本地部署部署大模型服务，目前ChatIoT采用API调用的方式。因此，你需要获取一个大模型API Key。
@@ -51,7 +51,7 @@ ChatIoT基于大型语言模型实现设备控制和创建规则。考虑到难�
 
 [![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?category=Integration&repository=ChatIoT&owner=ifcarpediem)
 
-详细教程参见 [ChatIoT集成安装指南](./docs/ChatIoT_Integration_Setup.md)。
+详细教程参见 [ChatIoT集成安装指南](./docs/ChatIoT_Integration_Setup_CN.md)。
 
 ### 💻 本地部署
 
