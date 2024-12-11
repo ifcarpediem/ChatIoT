@@ -37,7 +37,7 @@ ChatIoT基于大型语言模型实现设备控制和创建规则。考虑到难�
 - gpt-4-turbo
 - gpt-4o
 - deepseek-chat
-- moonshot-v1-8k
+- moonshot-v1-8k【国内当前推荐，点击[链接](https://platform.moonshot.cn/console/account)进行注册，创建自己的API key，但每分钟最多3次请求。】
 
 我们将很快支持更广泛大模型API类型。
 
